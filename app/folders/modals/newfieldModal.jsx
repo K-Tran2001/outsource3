@@ -24,7 +24,7 @@ export default function NewFieldModal({
     { value: "checkbox", label: "Checkbox" },
     { value: "radio", label: "Radio" },
     { value: "dropdown", label: "Dropdown" },
-    { value: "autoNumber", label: "AutoNumber" },
+    //{ value: "autoNumber", label: "AutoNumber" },
   ];
   React.useEffect(() => {
     if (!isEdit) {
@@ -286,6 +286,7 @@ export default function NewFieldModal({
                       setVisibleModalNewField(false);
                       setDataEdit({ label: "" });
                       //setNewField({ label: "" });
+                      setError(false);
                     } else {
                       setError(true);
                     }
@@ -299,6 +300,7 @@ export default function NewFieldModal({
                       setDataEdit({ label: "" });
                       setCurrentField(data);
                       //setNewField({ label: "" });
+                      setError(false);
                     } else {
                       setError(true);
                     }
