@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import CenterPanel from "@/app/formedit/centerPanel";
 import LeftPanel from "@/app/formedit/leftPanel";

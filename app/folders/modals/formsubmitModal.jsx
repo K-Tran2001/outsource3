@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import * as Fi from "react-icons/fi";
 
