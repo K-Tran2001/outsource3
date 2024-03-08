@@ -12,9 +12,7 @@ export default function Form() {
   const [open, setOpen] = React.useState(false);
   const [istakePhoto, setIsTakePhoto] = React.useState(false);
   const [dataForm, setDataForm] = React.useState({});
-  const [targetLang, setTargetLang] = React.useState(
-    localStorage.getItem("prefered_local") || "vi"
-  );
+  const [targetLang, setTargetLang] = React.useState("");
   const requestTranlate = {
     source_lang: "en",
     target_lang: targetLang,
@@ -83,9 +81,15 @@ export default function Form() {
     //   });
     // }
     // setDataForm(result);
-    getDataTranslate(transformedArray);
+    getDataTranslate(requestTranlate);
+  }, [targetLang]);
+  React.useEffect(() => {
+    let value;
+    // Get the value from local storage if it exists
+    value = localStorage.getItem("prefered_local") || "vi";
+    setTargetLang(value);
   }, []);
-
+  console.log(targetLang);
   return (
     <div className="relative w-full max-h-full">
       <div className="relative">
