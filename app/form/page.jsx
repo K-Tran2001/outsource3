@@ -4,7 +4,6 @@ import CameraPhoto from "@/app/controls/CameraPhoto/Camera/CameraPhoto";
 import * as React from "react";
 import * as Ai from "react-icons/ai";
 import "../folders/style.css";
-import useLocalStorag from "@/hooks/useLocalStorage";
 export default function Form() {
   const [fields, setFields] = React.useState([]);
   const [headingForm, setHeadingForm] = React.useState([]);
