@@ -57,7 +57,7 @@ export default function Form() {
     }
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     setFields(JSON.parse(localStorage.getItem("formItem"))?.fields || []);
     setHeadingForm(
       JSON.parse(localStorage.getItem("formItem"))?.headingForm || {}
@@ -83,7 +83,7 @@ export default function Form() {
     // setDataForm(result);
     getDataTranslate(transformedArray);
   }, []);
-  useEffect(() => {
+  React.useEffect(() => {
     let value;
     // Get the value from local storage if it exists
     value = localStorage.getItem("prefered_local") || "vi";
