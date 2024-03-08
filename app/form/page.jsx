@@ -12,9 +12,12 @@ export default function Form() {
   const [open, setOpen] = React.useState(false);
   const [istakePhoto, setIsTakePhoto] = React.useState(false);
   const [dataForm, setDataForm] = React.useState({});
+  const [targetLang, setTargetLang] = React.useState(
+    localStorage.getItem("prefered_local") || "vi"
+  );
   const requestTranlate = {
     source_lang: "en",
-    target_lang: localStorage.getItem("prefered_local" || "vi"),
+    target_lang: targetLang,
     click_to_upload: "Click to upload",
     or_drag_and_drop: "or drag and drop",
     take_a_photo: "Take A Photo",
