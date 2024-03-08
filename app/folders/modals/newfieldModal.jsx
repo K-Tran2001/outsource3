@@ -26,6 +26,14 @@ export default function NewFieldModal({
     { value: "dropdown", label: "Dropdown" },
     //{ value: "autoNumber", label: "AutoNumber" },
   ];
+  const lengthOptions = [
+    { value: "1", label: "0" },
+    { value: "2", label: "00" },
+    { value: "3", label: "000" },
+    { value: "4", label: "0000" },
+    { value: "5", label: "00000" },
+    { value: "6", label: "000000" },
+  ];
   React.useEffect(() => {
     if (!isEdit) {
       setDataEdit({
@@ -268,6 +276,114 @@ export default function NewFieldModal({
                       data?.values?.length > 0 ? data?.values?.join(",") : ""
                     }
                   />
+                </div>
+              )}
+              {data?.type == "autoNumber" && (
+                <div>
+                  <div className="flex space-x-4 justify-between">
+                    <div className="item">
+                      <label className="block mb-2 text-sm font-medium text-gray-900">
+                        Prefix
+                      </label>
+                      <input
+                        type="text"
+                        name="label"
+                        className={`${
+                          error
+                            ? "border border-red-500"
+                            : "border border-gray-300"
+                        } bg-gray-50  text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5`}
+                        placeholder=""
+                        required
+                        onChange={(e) => {
+                          setDataEdit({
+                            ...data,
+                            id: Math.random() + "",
+                            [e.target.name]: e.target.value,
+                            key: e.target.value,
+                            placeholder: e.target.value,
+                          });
+                        }}
+                        value={data?.label || ""}
+                      />
+                    </div>
+                    <div className="item">
+                      <label className="block mb-2 text-sm font-medium text-gray-900">
+                        Sufix
+                      </label>
+                      <input
+                        type="text"
+                        name="label"
+                        className={`${
+                          error
+                            ? "border border-red-500"
+                            : "border border-gray-300"
+                        } bg-gray-50  text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5`}
+                        placeholder=""
+                        required
+                        onChange={(e) => {
+                          setDataEdit({
+                            ...data,
+                            id: Math.random() + "",
+                            [e.target.name]: e.target.value,
+                            key: e.target.value,
+                            placeholder: e.target.value,
+                          });
+                        }}
+                        value={data?.label || ""}
+                      />
+                    </div>
+                  </div>
+                  <div className="flex space-x-4 pt-4 justify-between">
+                    <div className="item">
+                      <label className="block mb-2 text-sm font-medium text-gray-900">
+                        Length
+                      </label>
+                      <select
+                        className={`border border-gray-300
+               bg-gray-50  text-gray-900 text-sm rounded-lg  block  p-2.5`}
+                        // value={data?.type}
+                        // onChange={(e) => {
+                        //   setDataEdit({
+                        //     ...data,
+                        //     type: e.target.value,
+                        //   });
+                        // }}
+                      >
+                        {lengthOptions.map((item) => (
+                          <option key={Math.random()} value={item.value}>
+                            {item.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="item">
+                      <label className="block mb-2 text-sm font-medium text-gray-900">
+                        Default value
+                      </label>
+                      <input
+                        type="text"
+                        name="label"
+                        className={`${
+                          error
+                            ? "border border-red-500"
+                            : "border border-gray-300"
+                        } bg-gray-50  text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5`}
+                        placeholder=""
+                        required
+                        onChange={(e) => {
+                          setDataEdit({
+                            ...data,
+                            id: Math.random() + "",
+                            [e.target.name]: e.target.value,
+                            key: e.target.value,
+                            placeholder: e.target.value,
+                          });
+                        }}
+                        value={data?.label || ""}
+                      />
+                    </div>
+                  </div>
                 </div>
               )}
 

@@ -89,7 +89,6 @@ export default function Form() {
     value = localStorage.getItem("prefered_local") || "vi";
     setTargetLang(value);
   }, []);
-  console.log(targetLang);
   return (
     <div className="relative w-full max-h-full">
       <div className="relative">

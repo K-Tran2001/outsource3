@@ -9,6 +9,7 @@ import { DragDropContext } from "@hello-pangea/dnd";
 import FormSubmitModal from "./formsubmitModal";
 const { v4: uuidv4 } = require("uuid");
 import Link from "next/link";
+import ConfirmModal from "./confirmModal";
 
 export default function EditFormModal({
   pageTranslate,
@@ -26,6 +27,7 @@ export default function EditFormModal({
   const [isEdit, setIsEdit] = React.useState(false);
   const [visibleSubmitFormModal, setVisibleSubmitFormModal] =
     React.useState(false);
+  const [visibleConfirmModal, setVisibleConfirmModal] = React.useState(false);
   const [dataEdit, setDataEdit] = React.useState({
     id: "",
   });
@@ -105,7 +107,10 @@ export default function EditFormModal({
       fields: fields["fieldSelectedList"],
     };
     localStorage.setItem("formItem", JSON.stringify(newForm));
-    alert(pageTranslate?.save_success);
+    setVisibleConfirmModal(true);
+  };
+  const openForm = () => {
+    window.location.href = "../form";
   };
   return (
     <div
@@ -181,7 +186,7 @@ export default function EditFormModal({
                   headingForm={headingForm}
                 />
               </DragDropContext>
-              <RightPanel
+              {/* <RightPanel
                 setVisibleModalNewField={setVisibleModalNewField}
                 currentField={currentField}
                 setCurrentField={setCurrentField}
@@ -192,7 +197,7 @@ export default function EditFormModal({
                 setHeadingForm={setHeadingForm}
                 fields={fields}
                 setFields={setFields}
-              />
+              /> */}
             </div>
           </div>
         </div>
@@ -213,6 +218,12 @@ export default function EditFormModal({
         fields={fields}
         visibleSubmitFormModal={visibleSubmitFormModal}
         setVisibleSubmitFormModal={setVisibleSubmitFormModal}
+      />
+      <ConfirmModal
+        visible={visibleConfirmModal}
+        setVisible={setVisibleConfirmModal}
+        message={"Do you want to open the form?"}
+        callback={openForm}
       />
     </div>
   );

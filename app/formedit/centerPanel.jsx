@@ -60,7 +60,7 @@ export default function CenterPanel({
     setFields({ ...tempFields });
   };
   return (
-    <div className="w-5/12 bg-indigo-900 h-[calc(100vh-50px)] overflow-x-auto shadow-md has-scrollbar">
+    <div className="w-8/12 bg-indigo-900 h-[calc(100vh-50px)] overflow-x-auto shadow-md has-scrollbar">
       <div className="p-8 space-2">
         <div className="mt-8" onClick={() => setCurrentField(headingForm)}>
           <h1 className="text-3xl font-bold text-white text-center">

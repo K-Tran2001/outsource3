@@ -57,7 +57,7 @@ export default function LeftPanel({
     setFields({ ...tempFields });
   };
   return (
-    <div className="w-3/12 h-[calc(100vh-50px)] relative">
+    <div className="w-4/12 h-[calc(100vh-50px)] relative">
       <div className={`p-4`}>
         <div className="flex justify-between items-center mb-4">
           <div className="text-lg font-bold ">{pageTranslate?.fields}</div>
