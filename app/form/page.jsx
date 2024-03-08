@@ -4,6 +4,7 @@ import CameraPhoto from "@/app/controls/CameraPhoto/Camera/CameraPhoto";
 import * as React from "react";
 import * as Ai from "react-icons/ai";
 import "../folders/style.css";
+import useLocalStorag from "@/hooks/useLocalStorage";
 export default function Form() {
   const [fields, setFields] = React.useState([]);
   const [headingForm, setHeadingForm] = React.useState([]);
@@ -57,40 +58,31 @@ export default function Form() {
     }
   };
 
-  React.useEffect(() => {
-    setFields(
-      localStorage.getItem("formItem") != null
-        ? JSON.parse(localStorage.getItem("formItem"))?.fields
-        : []
-    );
+  useEffect(() => {
+    setFields(JSON.parse(localStorage.getItem("formItem"))?.fields || []);
     setHeadingForm(
-      localStorage.getItem("formItem")
-        ? JSON.parse(localStorage.getItem("formItem"))?.headingForm
-        : {}
+      JSON.parse(localStorage.getItem("formItem"))?.headingForm || {}
     );
-    if (localStorage.getItem("formItem") != null) {
-      const transformedArray =
-        JSON.parse(localStorage?.getItem("formItem")).fields == null
-          ? {}
-          : JSON.parse(localStorage.getItem("formItem")).fields.reduce(
-              (result, item) => {
-                result[item.key] = item.label;
-                return result;
-              },
-              {}
-            );
-      // const result = {};
-      // var fields = JSON.parse(localStorage.getItem("formItem"))?.fields;
-      // if (fields.length > 0) {
-      //   fields.forEach((item) => {
-      //     result[item.id] = item.value;
-      //   });
-      // }
-      // setDataForm(result);
-      getDataTranslate(transformedArray);
-    } else {
-      getDataTranslate(requestTranlate);
-    }
+
+    const transformedArray =
+      JSON.parse(localStorage?.getItem("formItem")).fields == null
+        ? {}
+        : JSON.parse(localStorage.getItem("formItem")).fields.reduce(
+            (result, item) => {
+              result[item.key] = item.label;
+              return result;
+            },
+            {}
+          );
+    // const result = {};
+    // var fields = JSON.parse(localStorage.getItem("formItem"))?.fields;
+    // if (fields.length > 0) {
+    //   fields.forEach((item) => {
+    //     result[item.id] = item.value;
+    //   });
+    // }
+    // setDataForm(result);
+    getDataTranslate(transformedArray);
   }, []);
   useEffect(() => {
     let value;
