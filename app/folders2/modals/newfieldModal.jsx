@@ -1,6 +1,7 @@
 import * as React from "react";
 
 export default function NewFieldModal({
+  pageTranslate,
   addField,
   visibleModalNewField,
   setVisibleModalNewField,
@@ -9,7 +10,6 @@ export default function NewFieldModal({
   isEdit,
   data,
   setDataEdit,
-  pageTranslate,
   setCurrentField,
 }) {
   const [error, setError] = React.useState(false);
@@ -63,6 +63,8 @@ export default function NewFieldModal({
       });
     }
   }, []);
+  console.log("data", data);
+  console.log("isEdit", isEdit);
   return (
     <div
       tabIndex="-1"

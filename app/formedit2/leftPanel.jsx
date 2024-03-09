@@ -3,6 +3,7 @@ import * as React from "react";
 import FieldItem from "./components/fieldItem";
 import { Draggable } from "@hello-pangea/dnd";
 import { StrictModeDroppable } from "./components/strictmode";
+import TitleText from "../folders2/sharedControls/titleText";
 
 export default function LeftPanel({
   type,
@@ -28,9 +29,9 @@ export default function LeftPanel({
     return result;
   };
   const addFieldForm = (id, index, field) => {
-    const isFormElement = ["heading", "divider", "file"].includes(field.type);
+    //const isFormElement = ["heading", "divider", "file"].includes(field.type);
     var dataCopy = field;
-    const srcItems = isFormElement
+    const srcItems = true
       ? fields[
           typeFormElements.indexOf(field.type) != -1 ? "formElements" : type
         ]
@@ -43,7 +44,7 @@ export default function LeftPanel({
     const destItems = appendAt(
       fields["fieldSelectedList"],
       0,
-      isFormElement
+      true
         ? { ...dataCopy, id: Math.random() + "" }
         : fields[
             typeFormElements.indexOf(field.type) != -1 ? "formElements" : type
@@ -57,32 +58,27 @@ export default function LeftPanel({
     setFields({ ...tempFields });
   };
   return (
-    <div className="w-4/12 h-[calc(100vh-50px)] relative">
-      <div className={`p-4`}>
-        <div className="flex justify-between items-center mb-4">
-          <div className="text-lg font-bold ">{pageTranslate?.fields}</div>
-          <div className="flex text-sm font-medium ">
-            <div className="text-bold text-gray-300">
-              {pageTranslate?.remove_all}
-            </div>
-            <div className="text-bold text-gray-700 ml-2">
-              {pageTranslate?.add_all}
-            </div>
-          </div>
-        </div>
+    <div className="w-2/12 h-[calc(100vh-50px)] relative bg-gray-100">
+      <div className={`p-0`}>
+        <TitleText
+          title={pageTranslate?.fields}
+          padding={"p-4"}
+          bg={"bg-gray-200"}
+        />
         <div
           className={`${
             isDragging
-              ? "border-dashed border-2 border-indigo-400 rounded-lg"
+              ? "border-dashed border-2 border-indigo-400 rounded-lg m-4"
               : ""
           }`}
         >
-          <div className="">
+          <div className="p-4">
             <StrictModeDroppable droppableId={type}>
               {(provided) => (
                 <div {...provided.droppableProps} ref={provided.innerRef}>
                   <div
-                    className={`overflow-x-auto  min-h-[calc(10vh)] has-scrollbar`}
+                    // className={`overflow-x-auto  min-h-[calc(10vh)] h-[360px] has-scrollbar`}
+                    className={`overflow-x-auto  min-h-[calc(10vh)]`}
                   >
                     {fields["fields"].length > 0
                       ? fields["fields"].map((field, index) => {
@@ -128,7 +124,7 @@ export default function LeftPanel({
             </StrictModeDroppable>
           </div>
         </div>
-        <div className="flex justify-between items-center my-4">
+        {/* <div className="flex justify-between items-center my-4">
           <button
             className="text-sm font-medium text-blue-500"
             data-modal-target="extralarge-modal"
@@ -142,14 +138,19 @@ export default function LeftPanel({
           >
             {pageTranslate?.new_field}
           </button>
-        </div>
-        <div className="absolute bottom-0 w-[calc(100%-2rem)]">
-          <div className="flex justify-between items-center mb-4">
+        </div> */}
+        <div className="absolute bottom-0 w-full p-0 bg-gray-100">
+          {/* <div className="flex justify-between items-center mb-4">
             <div className="text-lg font-bold ">
               {pageTranslate?.form_elements}
             </div>
-          </div>
-          <div>
+          </div> */}
+          <TitleText
+            title={pageTranslate?.form_elements}
+            padding={"p-4"}
+            bg={"bg-gray-200"}
+          />
+          <div className="p-4">
             <StrictModeDroppable droppableId={"formElements"}>
               {(provided) => (
                 <div {...provided.droppableProps} ref={provided.innerRef}>

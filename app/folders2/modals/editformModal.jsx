@@ -1,8 +1,8 @@
 "use client";
 import * as React from "react";
-import CenterPanel from "@/app/formedit/centerPanel";
-import LeftPanel from "@/app/formedit/leftPanel";
-import RightPanel from "@/app/formedit/rightPanel";
+import CenterPanel from "@/app/formedit2/centerPanel";
+import LeftPanel from "@/app/formedit2/leftPanel";
+import RightPanel from "@/app/formedit2/rightPanel";
 import * as Fi from "react-icons/fi";
 import NewFieldModal from "./newfieldModal";
 import { DragDropContext } from "@hello-pangea/dnd";
@@ -10,6 +10,7 @@ import FormSubmitModal from "./formsubmitModal";
 const { v4: uuidv4 } = require("uuid");
 import Link from "next/link";
 import ConfirmModal from "./confirmModal";
+import TopModal from "../sharedControls/topModal";
 
 export default function EditFormModal({
   pageTranslate,
@@ -21,6 +22,8 @@ export default function EditFormModal({
   setFields,
   headingForm,
   setHeadingForm,
+  addField,
+  setAddField,
 }) {
   const [currentField, setCurrentField] = React.useState(null);
   const [isDragging, setIsDragging] = React.useState(false);
@@ -31,7 +34,7 @@ export default function EditFormModal({
   const [dataEdit, setDataEdit] = React.useState({
     id: "",
   });
-  const [addField, setAddField] = React.useState("fields");
+
   const reorder = (list, startIndex, endIndex) => {
     const result = Array.from(list);
     const [removed] = result.splice(startIndex, 1);
@@ -80,16 +83,16 @@ export default function EditFormModal({
       );
       var dataCopy = fields[src.droppableId][src.index];
       const srcItems =
-        isFormElement && src.droppableId != "fieldSelectedList"
+        true && src.droppableId != "fieldSelectedList"
           ? fields[src.droppableId]
           : remove(fields[src.droppableId], src.index);
       const destItems =
-        isFormElement && src.droppableId == "fieldSelectedList"
+        true && src.droppableId == "fieldSelectedList"
           ? fields[dest.droppableId]
           : appendAt(
               fields[dest.droppableId],
               dest.index,
-              isFormElement
+              true
                 ? { ...dataCopy, id: Math.random() + "" }
                 : fields[src.droppableId][src.index]
             );
@@ -123,33 +126,15 @@ export default function EditFormModal({
     >
       <div className="relative w-full max-h-full">
         <div className="relative bg-white shadow">
-          <div className="h-[50px] flex items-center justify-between px-5 py-2 border-b rounded-t ">
-            <div>
-              <button
-                className="hover:bg-blue-100 hover:text-blue-500 flex items-center p-2 rounded-lg"
-                onClick={() => setVisible(false)}
-              >
-                <Fi.FiArrowLeft className="w-5 h-5 " />
-                <h1 className="pl-2 text-sm">{pageTranslate.back}</h1>
-              </button>
-            </div>
-            <div className="px-2 font-bold">{pageTranslate.new_survey}</div>
-            <div className="flex items-center">
-              <Link
-                href={"../form"}
-                target="blank"
-                className="py-1 px-2 text-blue-600 text-sm"
-              >
-                {pageTranslate.open_form}
-              </Link>
-              <button
-                className="p-2 px-4 bg-blue-800 rounded-lg text-white text-sm"
-                onClick={saveForm}
-              >
-                {pageTranslate.save_form}
-              </button>
-            </div>
-          </div>
+          <TopModal
+            bg={"bg-gradient-to-r from-indigo-400 to-indigo-100"}
+            padding={8}
+            height={50}
+            pageTranslate={pageTranslate}
+            setVisible={setVisible}
+            saveForm={saveForm}
+            openForm={openForm}
+          />
 
           <div className="">
             <div className="flex">
@@ -174,17 +159,21 @@ export default function EditFormModal({
                 />
                 <CenterPanel
                   type={"fieldSelectedList"}
-                  setAddField={setAddField}
+                  visibleModalNewField={visibleModalNewField}
                   setVisibleModalNewField={setVisibleModalNewField}
                   fields={fields}
                   setFields={setFields}
                   currentField={currentField}
                   setCurrentField={setCurrentField}
                   setIsDragging={setIsDragging}
+                  isEdit={isEdit}
                   setIsEdit={setIsEdit}
                   setDataEdit={setDataEdit}
                   pageTranslate={pageTranslate}
                   headingForm={headingForm}
+                  setHeadingForm={setHeadingForm}
+                  addField={addField}
+                  setAddField={setAddField}
                 />
               </DragDropContext>
               {/* <RightPanel
@@ -203,7 +192,7 @@ export default function EditFormModal({
           </div>
         </div>
       </div>
-      <NewFieldModal
+      {/* <NewFieldModal
         addField={addField}
         visibleModalNewField={visibleModalNewField}
         setVisibleModalNewField={setVisibleModalNewField}
@@ -214,7 +203,7 @@ export default function EditFormModal({
         isEdit={isEdit}
         pageTranslate={pageTranslate}
         setCurrentField={setCurrentField}
-      />
+      /> */}
       <FormSubmitModal
         fields={fields}
         visibleSubmitFormModal={visibleSubmitFormModal}

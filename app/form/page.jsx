@@ -56,6 +56,19 @@ export default function Form() {
       reader.readAsDataURL(file);
     }
   };
+  const autoGenCode = (jsonData) => {
+    const prefix = jsonData?.prefix + "";
+    const defaultValue = jsonData?.defaultValue + "";
+    const length = parseInt(jsonData.length);
+
+    const zerosCount = Math.max(
+      length - prefix.length - defaultValue.length,
+      0
+    );
+    let generatedString = prefix + "0".repeat(zerosCount) + defaultValue;
+
+    return generatedString;
+  };
 
   React.useEffect(() => {
     setFields(JSON.parse(localStorage.getItem("formItem"))?.fields || []);
@@ -194,11 +207,18 @@ export default function Form() {
                           key={Math.random()}
                         >
                           <input
-                            type={field.type}
+                            type={
+                              field.type === "autoNumber" ? "text" : field.type
+                            }
                             name="floating_email"
                             className="px-2 block py-3 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
-                            defaultValue={dataForm[field?.id]}
+                            readOnly={field.type === "autoNumber"}
+                            defaultValue={
+                              field.type === "autoNumber"
+                                ? autoGenCode(field.config)
+                                : dataForm[field?.id]
+                            }
                             onBlur={(e) => {
                               setDataForm({
                                 ...dataForm,

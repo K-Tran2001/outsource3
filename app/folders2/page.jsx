@@ -5,14 +5,14 @@ import EditFormModal from "./modals/editformModal";
 import { Translate } from "@/app/api/translate";
 import ChooseLangComponent from "./chooseLangComponent";
 
-export default function Folders() {
+export default function Folders2() {
   const [fields, setFields] = React.useState({
     fields: [
       {
         id: "item-1",
-        placeholder: "Name",
-        label: "Name",
-        key: "name",
+        placeholder: "Text",
+        label: "Text",
+        key: "text",
         type: "text",
         typeName: "Text",
         title: "",
@@ -22,9 +22,9 @@ export default function Folders() {
       },
       {
         id: "item-2",
-        placeholder: "Age",
-        label: "Age",
-        key: "age",
+        placeholder: "Number",
+        label: "Number",
+        key: "number",
         type: "number",
         typeName: "Number",
         title: "",
@@ -34,11 +34,59 @@ export default function Folders() {
       },
       {
         id: "item-3",
-        placeholder: "Date of Birth",
-        label: "Date Of Birth",
+        placeholder: "Date",
+        label: "Date",
         key: "date_of_birth",
         type: "date",
         typeName: "Date",
+        title: "",
+        discription: "",
+        value: null,
+        isShow: true,
+      },
+      {
+        id: "item-4",
+        placeholder: "Checkbox",
+        label: "Checkbox",
+        key: "checkbox",
+        type: "checkbox",
+        typeName: "Checkbox",
+        title: "",
+        discription: "",
+        value: null,
+        isShow: true,
+      },
+      {
+        id: "item-5",
+        placeholder: "Radio",
+        label: "Radio",
+        key: "radio",
+        type: "radio",
+        typeName: "Radio",
+        title: "",
+        discription: "",
+        value: null,
+        isShow: true,
+      },
+      {
+        id: "item-6",
+        placeholder: "Dropdown",
+        label: "Dropdown",
+        key: "dropdown",
+        type: "dropdown",
+        typeName: "Dropdown",
+        title: "",
+        discription: "",
+        value: null,
+        isShow: true,
+      },
+      {
+        id: "item-7",
+        placeholder: "AutoNumber",
+        label: "AutoNumber",
+        key: "autoNumber",
+        type: "autoNumber",
+        typeName: "AutoNumber",
         title: "",
         discription: "",
         value: null,
@@ -85,18 +133,19 @@ export default function Folders() {
       },
     ],
   });
+  const [addField, setAddField] = React.useState("fields");
   const [visible, setVisible] = React.useState(false);
   const [visibleModalNewField, setVisibleModalNewField] = React.useState(false);
   const [dataTranslate, setDataTranslate] = React.useState({});
   const [headingForm, setHeadingForm] = React.useState({
     id: "item-xx",
     placeholder: "_",
-    label: "_",
+    label: "Form title",
     key: "_",
-    type: "_",
-    title: "NEW FORM",
+    type: "headingForm",
+    title: "NEW FORM _",
     name: "NEW FORM",
-    discription: "",
+    discription: "description",
     value: "",
   });
   const [isLoading, setIsLoading] = React.useState(false);
@@ -262,6 +311,8 @@ export default function Folders() {
         setFields={setFields}
         headingForm={headingForm}
         setHeadingForm={setHeadingForm}
+        addField={addField}
+        setAddField={setAddField}
       />
     </div>
   );
