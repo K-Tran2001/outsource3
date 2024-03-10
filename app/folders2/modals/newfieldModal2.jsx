@@ -15,11 +15,6 @@ export default function NewFieldModal2({
   setHeadingForm,
 }) {
   const [error, setError] = React.useState(false);
-  const [selectedOption, setSelectedOption] = React.useState({
-    value: data?.type,
-    label: data?.typeName,
-  });
-  console.log(data);
   var options = [
     { disable: false, value: "text", label: "Text" },
     { disable: false, value: "number", label: "Number" },
@@ -112,19 +107,19 @@ export default function NewFieldModal2({
         </div>
         <div className="bg-white rounded-b-lg">
           <div className="flex  w-full h-full">
+            {/* LEFT */}
             <div className="w-[50%]  p-4">
-              {/* LEFT */}
               <div className="space-y-6">
                 <div>
-                  <label className="block mb-2 text-md font-medium text-gray-900">
+                  <h1 className="block mb-2 text-md font-medium text-gray-900">
                     {pageTranslate?.field_name}
-                  </label>
+                  </h1>
                   <input
                     type="text"
                     name="label"
                     className={`${
                       error ? "border border-red-500" : "border border-gray-300"
-                    } bg-gray-50  text-gray-900 text-md rounded-lg  block w-full p-2.5 bg-transparent`}
+                    } bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 bg-transparent`}
                     placeholder={pageTranslate.enter_a_field_name}
                     required
                     onChange={(e) => {
@@ -141,9 +136,9 @@ export default function NewFieldModal2({
                 </div>
                 {data?.type != "headingForm" && (
                   <div>
-                    <label className="block mb-2 text-md font-medium text-gray-900 ">
+                    <h1 className="block mb-2 text-md font-medium text-gray-900 ">
                       {pageTranslate?.field_type}
-                    </label>
+                    </h1>
                     <div className="h-[400px] overflow-y-scroll overflow-hidden has-scrollbar">
                       <ul className="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg ">
                         {options.map((item) => (
@@ -179,16 +174,20 @@ export default function NewFieldModal2({
                 )}
               </div>
             </div>
+            {/* RIGHT */}
             <div className="w-[50%]  p-4">
-              {/* RIGHT */}
               <div className="mb-4">
-                <label className="block mb-2 text-md font-medium text-gray-900">
+                <label
+                  className="block mb-2 text-md font-medium text-gray-900"
+                  htmlFor="title"
+                >
                   {"Title"}
                 </label>
                 <textarea
+                  id="title"
                   type="text"
                   name="label"
-                  className={`border border-gray-300 bg-gray-50  text-gray-900 text-md rounded-lg  block w-full p-2.5 bg-transparent`}
+                  className={`border border-gray-300 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 bg-transparent`}
                   placeholder={pageTranslate?.title}
                   required
                   onBlur={(e) => {
@@ -197,17 +196,21 @@ export default function NewFieldModal2({
                       title: e.target.value,
                     });
                   }}
-                  defaultValue={data?.title}
+                  defaultValue={data?.title || ""}
                 />
               </div>
               <div className="mb-4">
-                <label className="block mb-2 text-md font-medium text-gray-900">
+                <label
+                  className="block mb-2 text-md font-medium text-gray-900"
+                  htmlFor="discription"
+                >
                   {"Discription"}
                 </label>
                 <textarea
+                  id="discription"
                   type="text"
                   name="label"
-                  className={`border border-gray-300 bg-gray-50  text-gray-900 text-md rounded-lg  block w-full p-2.5 bg-transparent`}
+                  className={`border border-gray-300 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 bg-transparent`}
                   placeholder={pageTranslate?.discription}
                   required
                   onBlur={(e) => {
@@ -216,37 +219,22 @@ export default function NewFieldModal2({
                       discription: e.target.value,
                     });
                   }}
-                  defaultValue={data?.discription}
+                  defaultValue={data?.discription || ""}
                 />
               </div>
               {(data?.type == "dropdown" || data?.type == "contactList") && (
                 <div>
-                  <label className="block mb-2 text-md font-medium text-gray-900">
+                  <label
+                    className="block mb-2 text-md font-medium text-gray-900"
+                    htmlFor="values"
+                  >
                     {pageTranslate?.values}
                   </label>
-                  {/* <input
-                  type="text"
-                  name="label"
-                  className={`${
-                    error ? "border border-red-500" : "border border-gray-300"
-                  } bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 bg-transparent`}
-                  placeholder={pageTranslate.enter_a_field_name}
-                  required
-                  onChange={(e) => {
-                    setDataEdit({
-                      ...data,
-                      id: Math.random() + "",
-                      [e.target.name]: e.target.value,
-                      key: e.target.value,
-                      placeholder: e.target.value,
-                    });
-                  }}
-                  value={data?.label || ""}
-                /> */}
                   <textarea
+                    id="values"
                     type="text"
                     name="label"
-                    className={`border border-gray-300 bg-gray-50  text-gray-900 text-md rounded-lg  block w-full p-2.5 bg-transparent`}
+                    className={`border border-gray-300 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 bg-transparent`}
                     placeholder={pageTranslate?.values}
                     required
                     onBlur={(e) => {
@@ -266,13 +254,17 @@ export default function NewFieldModal2({
                 <div>
                   <div className="flex space-x-4 justify-between">
                     <div className="item">
-                      <label className="block mb-2 text-md font-medium text-gray-900">
+                      <label
+                        className="block mb-2 text-md font-medium text-gray-900"
+                        htmlFor="prefix"
+                      >
                         Prefix
                       </label>
                       <input
+                        id="prefix"
                         type="text"
                         name="label"
-                        className={`border border-gray-300 bg-gray-50  text-gray-900 text-md rounded-lg  block w-full p-2.5 bg-transparent text-right`}
+                        className={`border border-gray-300 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 bg-transparent text-right`}
                         placeholder=""
                         required
                         onChange={(e) => {
@@ -288,13 +280,17 @@ export default function NewFieldModal2({
                       />
                     </div>
                     <div className="item">
-                      <label className="block mb-2 text-md font-medium text-gray-900">
+                      <label
+                        className="block mb-2 text-md font-medium text-gray-900"
+                        htmlFor="sufix"
+                      >
                         Sufix
                       </label>
                       <input
+                        id="sufix"
                         type="text"
                         name="label"
-                        className={`border border-gray-300 bg-gray-50  text-gray-900 text-md rounded-lg  block w-full p-2.5 bg-transparent text-right`}
+                        className={`border border-gray-300 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 bg-transparent text-right`}
                         placeholder=""
                         required
                         onChange={(e) => {
@@ -312,10 +308,14 @@ export default function NewFieldModal2({
                   </div>
                   <div className="flex space-x-4 pt-4 justify-between">
                     <div className="item">
-                      <label className="block mb-2 text-md font-medium text-gray-900">
+                      <label
+                        className="block mb-2 text-md font-medium text-gray-900"
+                        htmlFor="length"
+                      >
                         Length
                       </label>
                       <select
+                        id="length"
                         className={`border border-gray-300
                bg-gray-50  text-gray-900 text-sm rounded-lg  block  p-2.5`}
                         onChange={(e) => {
@@ -337,13 +337,17 @@ export default function NewFieldModal2({
                       </select>
                     </div>
                     <div className="item">
-                      <label className="block mb-2 text-md font-medium text-gray-900">
+                      <label
+                        className="block mb-2 text-md font-medium text-gray-900"
+                        htmlFor="default_value"
+                      >
                         Default value
                       </label>
                       <input
+                        id="default_value"
                         type="text"
                         name="label"
-                        className={`border border-gray-300 bg-gray-50  text-gray-900 text-md rounded-lg  block w-full p-2.5 bg-transparent text-right`}
+                        className={`border border-gray-300 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 bg-transparent text-right`}
                         placeholder=""
                         required
                         onChange={(e) => {
@@ -363,11 +367,15 @@ export default function NewFieldModal2({
               )}
               {/*  */}
               <div className="my-4">
-                <label className="relative inline-flex items-center mr-5 cursor-pointer">
+                <label
+                  className="relative inline-flex items-center mr-5 cursor-pointer"
+                  htmlFor="_checkbox"
+                >
                   <input
+                    id="_checkbox"
                     type="checkbox"
                     className="sr-only peer"
-                    checked={data?.required}
+                    checked={data?.required || false}
                     onChange={(e) =>
                       setDataEdit({ ...data, required: e.target.checked })
                     }
@@ -378,24 +386,6 @@ export default function NewFieldModal2({
                 </label>
               </div>
               {/*  */}
-              {/* <div className="flex items-center pl-3">
-              <input
-                id="required"
-                onChange={(e) =>
-                  setDataEdit({ ...data, required: e.target.value })
-                }
-                type="checkbox"
-                value={data?.required}
-                name="sr-only peer"
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
-              />
-              <label
-                className="w-full py-3 ml-2 text-md font-medium text-gray-900"
-                htmlFor={"required"}
-              >
-                {"Required"}
-              </label>
-            </div> */}
             </div>
           </div>
           <div className="flex justify-end space-x-4 p-4">

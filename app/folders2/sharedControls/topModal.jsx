@@ -23,7 +23,7 @@ const TopModal = ({
         color={"text-gray-800"}
         colorHover={"hover:text-bule-500"}
         bgHover={"hover:bg-blue-100"}
-        padding={"p-3"}
+        padding={"px-3 py-2"}
         rounded={"rounded-lg"}
         pageTranslate={pageTranslate}
         leftIcon={<Fi.FiArrowLeft className="w-5 h-5 " />}
@@ -34,7 +34,7 @@ const TopModal = ({
       <div className="flex items-center">
         <Button_Sm_NoBg
           color={"text-blue-800"}
-          padding={"p-3"}
+          padding={"px-3 py-2"}
           pageTranslate={pageTranslate}
           onClick={openForm}
           text={pageTranslate.open_form}
@@ -44,7 +44,7 @@ const TopModal = ({
           bg={"bg-blue-500"}
           color={"text-white"}
           size={"text-sm"}
-          padding={"p-3"}
+          padding={"px-3 py-2"}
           rounded={"rounded-lg"}
           pageTranslate={pageTranslate}
           onClick={saveForm}

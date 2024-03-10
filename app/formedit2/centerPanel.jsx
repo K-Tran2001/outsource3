@@ -67,7 +67,6 @@ export default function CenterPanel({
     ] = destItems;
     setFields({ ...tempFields });
   };
-  console.log("headingForm", headingForm);
   return (
     <div className="w-10/12 bg-white h-[calc(100vh-50px)] overflow-x-auto shadow-md has-scrollbar">
       <div className="p-8 space-2">

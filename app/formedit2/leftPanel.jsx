@@ -62,7 +62,7 @@ export default function LeftPanel({
       <div className={`p-0`}>
         <TitleText
           title={pageTranslate?.fields}
-          padding={"p-4"}
+          padding={"px-4 py-2"}
           bg={"bg-gray-200"}
         />
         <div
@@ -72,12 +72,12 @@ export default function LeftPanel({
               : ""
           }`}
         >
-          <div className="p-4">
+          <div className="p-2">
             <StrictModeDroppable droppableId={type}>
               {(provided) => (
                 <div {...provided.droppableProps} ref={provided.innerRef}>
                   <div
-                    // className={`overflow-x-auto  min-h-[calc(10vh)] h-[360px] has-scrollbar`}
+                    //className={`overflow-x-auto  min-h-[calc(10vh)] h-[350px] has-scrollbar`}
                     className={`overflow-x-auto  min-h-[calc(10vh)]`}
                   >
                     {fields["fields"].length > 0
@@ -147,10 +147,10 @@ export default function LeftPanel({
           </div> */}
           <TitleText
             title={pageTranslate?.form_elements}
-            padding={"p-4"}
+            padding={"px-4 py-2"}
             bg={"bg-gray-200"}
           />
-          <div className="p-4">
+          <div className="p-2">
             <StrictModeDroppable droppableId={"formElements"}>
               {(provided) => (
                 <div {...provided.droppableProps} ref={provided.innerRef}>

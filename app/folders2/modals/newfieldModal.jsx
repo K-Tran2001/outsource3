@@ -63,8 +63,6 @@ export default function NewFieldModal({
       });
     }
   }, []);
-  console.log("data", data);
-  console.log("isEdit", isEdit);
   return (
     <div
       tabIndex="-1"

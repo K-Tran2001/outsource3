@@ -19,6 +19,7 @@ export default function Folders2() {
         discription: "",
         value: "",
         isShow: true,
+        required: false,
       },
       {
         id: "item-2",
@@ -31,6 +32,7 @@ export default function Folders2() {
         discription: "",
         value: 0,
         isShow: true,
+        required: false,
       },
       {
         id: "item-3",
@@ -43,6 +45,7 @@ export default function Folders2() {
         discription: "",
         value: null,
         isShow: true,
+        required: false,
       },
       {
         id: "item-4",
@@ -55,6 +58,7 @@ export default function Folders2() {
         discription: "",
         value: null,
         isShow: true,
+        required: false,
       },
       {
         id: "item-5",
@@ -67,6 +71,7 @@ export default function Folders2() {
         discription: "",
         value: null,
         isShow: true,
+        required: false,
       },
       {
         id: "item-6",
@@ -79,6 +84,7 @@ export default function Folders2() {
         discription: "",
         value: null,
         isShow: true,
+        required: false,
       },
       {
         id: "item-7",
@@ -91,6 +97,7 @@ export default function Folders2() {
         discription: "",
         value: null,
         isShow: true,
+        required: false,
       },
     ],
     fieldSelectedList: [],
@@ -106,6 +113,7 @@ export default function Folders2() {
         discription: "",
         value: "",
         isShow: true,
+        required: false,
       },
       {
         id: "item-12",
@@ -118,6 +126,7 @@ export default function Folders2() {
         discription: "",
         value: "",
         isShow: true,
+        required: false,
       },
       {
         id: "item-13",
@@ -130,6 +139,7 @@ export default function Folders2() {
         discription: "",
         value: "",
         isShow: true,
+        required: false,
       },
     ],
   });
@@ -249,13 +259,16 @@ export default function Folders2() {
         selectedLanguage={selectedLanguage}
         setSelectedlanguage={setSelectedlanguage}
       />
-      <div className=" w-full my-4" onClick={() => setVisible(true)}>
+      <div
+        className="relative w-full my-4 h-[50px]"
+        onClick={() => setVisible(true)}
+      >
         <h1 className="text-center text-3xl ">
           {dataTranslate.click_here_to_open_form_editor}
         </h1>
       </div>
       <svg
-        className="inset-0 h-full w-full stroke-[#1118271a]"
+        className="inset-0 h-full w-full stroke-[#1118271a] h-[calc(100vh-250px)]"
         fill="none"
         onClick={() => setVisible(true)}
       >

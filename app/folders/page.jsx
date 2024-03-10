@@ -93,7 +93,7 @@ export default function Folders() {
     placeholder: "_",
     label: "_",
     key: "_",
-    type: "_",
+    type: "headingForm",
     title: "NEW FORM",
     name: "NEW FORM",
     discription: "",

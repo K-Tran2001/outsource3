@@ -128,7 +128,7 @@ export default function EditFormModal({
         <div className="relative bg-white shadow">
           <TopModal
             bg={"bg-gradient-to-r from-indigo-400 to-indigo-100"}
-            padding={8}
+            padding={4}
             height={50}
             pageTranslate={pageTranslate}
             setVisible={setVisible}
