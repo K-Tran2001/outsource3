@@ -3,9 +3,6 @@ import * as React from "react";
 import "./style.css";
 import langs from "langs";
 import * as countryFlags from "country-flags-svg";
-import EditFormModal from "./modals/editformModal";
-import { Translate } from "@/app/api/translate";
-import Link from "next/link";
 
 export default function ChooseLangComponent({
   selectedLanguage,
@@ -34,7 +31,9 @@ export default function ChooseLangComponent({
         //flag: `https://unpkg.com/language-icons@0.3.0/icons/${languageCode}.svg`,
       };
     });
-    setLanguages(languages.filter((lang) => lang.flag != ""));
+    setLanguages(
+      languages.filter((lang) => lang.flag != "" && lang.code != "ga")
+    );
   };
   const getLanguageByCode = (code) => {
     const language = langs.all().find((lang) => lang["1"] == code);
@@ -84,10 +83,11 @@ export default function ChooseLangComponent({
               {languages?.map((lang) => (
                 <li
                   key={Math.random()}
-                  className="px-4"
+                  className="px-4 cursor-pointer"
                   onClick={() => {
                     changeLanguage(lang);
                     setSelectedlanguage(lang);
+                    setExpand(false);
                   }}
                 >
                   <div className="inline-flex items-center">

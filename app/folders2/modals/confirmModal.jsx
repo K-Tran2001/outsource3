@@ -1,6 +1,7 @@
 import * as React from "react";
 
 export default function ConfirmModal({
+  pageTranslate,
   visible,
   setVisible,
   message,
@@ -42,7 +43,9 @@ export default function ConfirmModal({
             <span className="sr-only">Close modal</span>
           </button>
           <div className="px-6 py-6 lg:px-8">
-            <h3 className="mb-4 text-xl font-medium text-gray-900 ">Confirm</h3>
+            <h3 className="mb-4 text-xl font-medium text-gray-900 ">
+              {pageTranslate.confirm}
+            </h3>
             <div className="space-y-6">
               {message}
               <div className="flex justify-end space-x-2 mt-4">
@@ -53,7 +56,7 @@ export default function ConfirmModal({
                     setVisible(false);
                   }}
                 >
-                  No
+                  {pageTranslate.no}
                 </button>
                 <button
                   type="button"
@@ -63,7 +66,7 @@ export default function ConfirmModal({
                     setVisible(false);
                   }}
                 >
-                  Yes
+                  {pageTranslate.yes}
                 </button>
               </div>
             </div>

@@ -11,6 +11,7 @@ const { v4: uuidv4 } = require("uuid");
 import Link from "next/link";
 import ConfirmModal from "./confirmModal";
 import TopModal from "../sharedControls/topModal";
+import TopModal2 from "../sharedControls/topModal2";
 
 export default function EditFormModal({
   pageTranslate,
@@ -126,9 +127,9 @@ export default function EditFormModal({
     >
       <div className="relative w-full max-h-full">
         <div className="relative bg-white shadow">
-          <TopModal
+          <TopModal2
             bg={"bg-gradient-to-r from-indigo-400 to-indigo-100"}
-            padding={4}
+            padding={"py-4 pl-4"}
             height={50}
             pageTranslate={pageTranslate}
             setVisible={setVisible}
@@ -210,9 +211,10 @@ export default function EditFormModal({
         setVisibleSubmitFormModal={setVisibleSubmitFormModal}
       /> */}
       <ConfirmModal
+        pageTranslate={pageTranslate}
         visible={visibleConfirmModal}
         setVisible={setVisibleConfirmModal}
-        message={"Do you want to open the form?"}
+        message={pageTranslate.do_you_want_to_open_the_form}
         callback={openForm}
       />
     </div>

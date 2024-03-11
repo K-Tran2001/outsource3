@@ -6,18 +6,22 @@ export default function MasterLeftSideBar() {
     {
       name: "home",
       icon: <Hi2.HiOutlineHome className="text-gray-400 w-6 h-6" />,
+      hrefPage: "./folders2",
     },
     {
       name: "home",
       icon: <Hi2.HiOutlineBellAlert className="text-gray-400 w-6 h-6" />,
+      hrefPage: "./folders2",
     },
     {
       name: "home",
       icon: <Hi2.HiOutlineFolderOpen className="text-gray-400 w-6 h-6" />,
+      hrefPage: "./personal",
     },
     {
       name: "home",
       icon: <Hi2.HiOutlineSparkles className="text-gray-400 w-6 h-6" />,
+      hrefPage: "./folders2",
     },
   ];
   return (
@@ -37,7 +41,7 @@ export default function MasterLeftSideBar() {
           {menus.map((menu) => (
             <li className="mt-1" key={Math.random()}>
               <a
-                href="#"
+                href={menu.hrefPage}
                 className="flex gap-x-3 rounded-md p-3 text-sm leading-6 "
               >
                 {menu.icon}

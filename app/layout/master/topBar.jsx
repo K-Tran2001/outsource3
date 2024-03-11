@@ -1,7 +1,6 @@
 import React from "react";
 import langs from "langs";
 import * as countryFlags from "country-flags-svg";
-import Link from "next/link";
 
 export default function MasterTopBar() {
   const [selectedLanguage, setSelectedlanguage] = React.useState(undefined);
@@ -28,7 +27,9 @@ export default function MasterTopBar() {
         //flag: `https://unpkg.com/language-icons@0.3.0/icons/${languageCode}.svg`,
       };
     });
-    setLanguages(languages.filter((lang) => lang.flag != ""));
+    setLanguages(
+      languages.filter((lang) => lang.flag != "" && lang.code != "ga")
+    );
   };
   const getLanguageByCode = (code) => {
     const language = langs.all().find((lang) => lang["1"] == code);

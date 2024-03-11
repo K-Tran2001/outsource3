@@ -1,7 +1,6 @@
 import React from "react";
 
 const Button_Sm_NoBg = ({
-  pageTranslate,
   bg,
   color,
   colorHover,
@@ -9,11 +8,13 @@ const Button_Sm_NoBg = ({
   size,
   padding,
   rounded,
+  border,
   fontWeight,
   onClick,
   leftIcon,
   rightIcon,
   text,
+  height,
 }) => {
   return (
     <div>
@@ -22,13 +23,14 @@ const Button_Sm_NoBg = ({
         ${color != null && color} ${colorHover != null && colorHover}
         ${bgHover != null && bgHover} 
         ${padding != null && padding}
-        ${rounded != null && rounded} ${
-          size != null && size
-        } flex items-center`}
+        ${rounded != null && rounded} ${size != null && size} ${
+          border != null && border
+        } ${size != null && size} flex items-center`}
         onClick={onClick}
       >
         <div>{leftIcon}</div>
-        <h1 className="pl-2 text-sm">{text}</h1>
+        <div className="pl-2 text-sm">{text}</div>
+        <div>{rightIcon}</div>
       </button>
     </div>
   );

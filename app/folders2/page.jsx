@@ -225,6 +225,10 @@ export default function Folders2() {
       length: "Length",
       defaultValue: "Default Value",
       form_data_not_found: "Form data not found!",
+      confirm: "Confirm",
+      do_you_want_to_open_the_form: "Do you want to open the form?",
+      yes: "Yes",
+      no: "No",
     };
     const formDatab = new FormData();
 

@@ -7,8 +7,18 @@ export const Proxy = async (method, api, request, isUseToken = true) => {
       const response = await axios.get(api);
       result.success = response.data?.success;
       result.data = response?.data?.data;
-    } else {
+    } else if (method.toLowerCase() === "post") {
       const response = await axios.post(api, request || {});
+      result.success = response.data?.success;
+      result.data = response?.data?.data;
+    }
+    else if (method.toLowerCase() === "put") {
+      const response = await axios.put(api, request || {});
+      result.success = response.data?.success;
+      result.data = response?.data?.data;
+    }
+    else{
+      const response = await axios.delete(api, request || {});
       result.success = response.data?.success;
       result.data = response?.data?.data;
     }
