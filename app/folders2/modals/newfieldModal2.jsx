@@ -181,7 +181,7 @@ export default function NewFieldModal2({
                   className="block mb-2 text-md font-medium text-gray-900"
                   htmlFor="title"
                 >
-                  {"Title"}
+                  {pageTranslate?.title}
                 </label>
                 <textarea
                   id="title"
@@ -204,7 +204,7 @@ export default function NewFieldModal2({
                   className="block mb-2 text-md font-medium text-gray-900"
                   htmlFor="discription"
                 >
-                  {"Discription"}
+                  {pageTranslate?.discription}
                 </label>
                 <textarea
                   id="discription"
@@ -226,12 +226,12 @@ export default function NewFieldModal2({
                 <div>
                   <label
                     className="block mb-2 text-md font-medium text-gray-900"
-                    htmlFor="values"
+                    htmlFor="values_contact"
                   >
                     {pageTranslate?.values}
                   </label>
                   <textarea
-                    id="values"
+                    id="values_contact"
                     type="text"
                     name="label"
                     className={`border border-gray-300 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 bg-transparent`}
@@ -258,7 +258,7 @@ export default function NewFieldModal2({
                         className="block mb-2 text-md font-medium text-gray-900"
                         htmlFor="prefix"
                       >
-                        Prefix
+                        {pageTranslate?.prefix}
                       </label>
                       <input
                         id="prefix"
@@ -284,7 +284,7 @@ export default function NewFieldModal2({
                         className="block mb-2 text-md font-medium text-gray-900"
                         htmlFor="sufix"
                       >
-                        Sufix
+                        {pageTranslate?.suffix}
                       </label>
                       <input
                         id="sufix"
@@ -308,14 +308,11 @@ export default function NewFieldModal2({
                   </div>
                   <div className="flex space-x-4 pt-4 justify-between">
                     <div className="item">
-                      <label
-                        className="block mb-2 text-md font-medium text-gray-900"
-                        htmlFor="length"
-                      >
-                        Length
-                      </label>
+                      <h1 className="block mb-2 text-md font-medium text-gray-900">
+                        {pageTranslate?.length}
+                      </h1>
                       <select
-                        id="length"
+                        id={"select_length"}
                         className={`border border-gray-300
                bg-gray-50  text-gray-900 text-sm rounded-lg  block  p-2.5`}
                         onChange={(e) => {
@@ -337,14 +334,10 @@ export default function NewFieldModal2({
                       </select>
                     </div>
                     <div className="item">
-                      <label
-                        className="block mb-2 text-md font-medium text-gray-900"
-                        htmlFor="default_value"
-                      >
-                        Default value
-                      </label>
+                      <h1 className="block mb-2 text-md font-medium text-gray-900">
+                        {pageTranslate?.defaultValue}
+                      </h1>
                       <input
-                        id="default_value"
                         type="text"
                         name="label"
                         className={`border border-gray-300 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 bg-transparent text-right`}
@@ -369,10 +362,10 @@ export default function NewFieldModal2({
               <div className="my-4">
                 <label
                   className="relative inline-flex items-center mr-5 cursor-pointer"
-                  htmlFor="_checkbox"
+                  htmlFor="required_checkbox"
                 >
                   <input
-                    id="_checkbox"
+                    id="required_checkbox"
                     type="checkbox"
                     className="sr-only peer"
                     checked={data?.required || false}
@@ -382,7 +375,9 @@ export default function NewFieldModal2({
                     value={data?.required || false}
                   />
                   <div className="w-11 h-6 bg-gray-200 rounded-full peer   peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-300"></div>
-                  <span className="ml-3 text-md font-medium ">Required</span>
+                  <span className="ml-3 text-md font-medium ">
+                    {pageTranslate?.required}
+                  </span>
                 </label>
               </div>
               {/*  */}

@@ -204,11 +204,11 @@ export default function EditFormModal({
         pageTranslate={pageTranslate}
         setCurrentField={setCurrentField}
       /> */}
-      <FormSubmitModal
+      {/* <FormSubmitModal
         fields={fields}
         visibleSubmitFormModal={visibleSubmitFormModal}
         setVisibleSubmitFormModal={setVisibleSubmitFormModal}
-      />
+      /> */}
       <ConfirmModal
         visible={visibleConfirmModal}
         setVisible={setVisibleConfirmModal}

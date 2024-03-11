@@ -219,6 +219,12 @@ export default function Folders2() {
       form_title: "Form title",
       title: "Title",
       values: "Values",
+      prefix: "Prefix",
+      suffix: "Suffix",
+      required: "Required",
+      length: "Length",
+      defaultValue: "Default Value",
+      form_data_not_found: "Form data not found!",
     };
     const formDatab = new FormData();
 

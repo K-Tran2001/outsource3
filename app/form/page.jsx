@@ -24,6 +24,7 @@ export default function Form() {
     take_a_photo_again: "Take a photo again",
     submit: "Submit",
     result_saved: "Result saved",
+    form_data_not_found: "Form data not found!",
   };
   async function getDataTranslate(translateMore) {
     const _requestTranlate = {
@@ -57,9 +58,9 @@ export default function Form() {
     }
   };
   const autoGenCode = (jsonData) => {
-    const prefix = jsonData?.prefix + "";
-    const defaultValue = jsonData?.defaultValue + "";
-    const length = parseInt(jsonData.length);
+    const prefix = (jsonData?.prefix || 0) + "";
+    const defaultValue = (jsonData?.defaultValue || 0) + "";
+    const length = parseInt(jsonData?.length || 2);
 
     const zerosCount = Math.max(
       length - prefix.length - defaultValue.length,
@@ -76,16 +77,16 @@ export default function Form() {
       JSON.parse(localStorage.getItem("formItem"))?.headingForm || {}
     );
 
-    const transformedArray =
-      JSON.parse(localStorage?.getItem("formItem")).fields == null
-        ? {}
-        : JSON.parse(localStorage.getItem("formItem")).fields.reduce(
-            (result, item) => {
-              result[item.key] = item.label;
-              return result;
-            },
-            {}
-          );
+    // const transformedArray =
+    //   JSON.parse(localStorage?.getItem("formItem")).fields == null
+    //     ? {}
+    //     : JSON.parse(localStorage.getItem("formItem")).fields.reduce(
+    //         (result, item) => {
+    //           result[item.key] = item.label;
+    //           return result;
+    //         },
+    //         {}
+    //       );
     // const result = {};
     // var fields = JSON.parse(localStorage.getItem("formItem"))?.fields;
     // if (fields.length > 0) {
@@ -145,6 +146,7 @@ export default function Form() {
                         <div className="my-8  rounded-lg " key={Math.random()}>
                           <div className="flex items-center pl-3">
                             <input
+                              id={field.id}
                               defaultChecked={dataForm[field.id]}
                               onBlur={(e) => {
                                 setDataForm({
@@ -156,7 +158,10 @@ export default function Form() {
                               name="list-radio"
                               className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500  focus:ring-2 mr-4"
                             />
-                            <label className="w-full py-3 ml-2 text-lg font-medium text-gray-900">
+                            <label
+                              className="w-full py-3 ml-2 text-lg font-medium text-gray-900"
+                              htmlFor={field.id}
+                            >
                               {field.label}
                             </label>
                           </div>
@@ -189,9 +194,9 @@ export default function Form() {
                               </option>
                             ))}
                           </select>
-                          <label className="peer-focus:text-lg absolute text-lg text-gray-500 duration-300 transform -translate-y-10 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                          <h1 className="peer-focus:text-lg absolute text-lg text-gray-500 duration-300 transform -translate-y-10 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                             {field.type == "date" ? "" : field.label}
-                          </label>
+                          </h1>
                         </div>
                       );
                     } else
@@ -216,7 +221,7 @@ export default function Form() {
                             readOnly={field.type === "autoNumber"}
                             defaultValue={
                               field.type === "autoNumber"
-                                ? autoGenCode(field.config)
+                                ? autoGenCode(field?.config)
                                 : dataForm[field?.id]
                             }
                             onBlur={(e) => {
@@ -226,9 +231,9 @@ export default function Form() {
                               });
                             }}
                           />
-                          <label className="peer-focus:text-lg absolute text-lg text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                          <h1 className="peer-focus:text-lg absolute text-lg text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                             {field.type == "date" ? "" : field.label}
-                          </label>
+                          </h1>
                         </div>
                       );
                   } else {
@@ -312,95 +317,106 @@ export default function Form() {
                   }
                 })}
 
-                {fields?.some((item) => item.type == "file") && (
-                  <div className="mb-4" key={Math.random()}>
-                    {open && istakePhoto ? (
-                      <div className="flex flex-col">
-                        <CameraPhoto
-                          dataTranslate={dataTranslate}
-                          ContactImageURL={""}
-                          cameraCallback={(byte64) => {
-                            setIdentityImage(
-                              byte64.replace("data:image/png;base64,", "")
-                            );
-                            localStorage.setItem(
-                              "base64Img",
-                              byte64.replace("data:image/png;base64,", "")
-                            );
-                          }}
-                        />
-                        {identityImage.length > 0 && (
-                          <div className="flex justify-center">
-                            <button
-                              className="w-1/2 bg-slate-400 text-white font-normal text-lg py-2 px-0.5 rounded-xl flex justify-center mt-3"
-                              onClick={() => {
-                                setOpen(!open);
-                                setIdentityImage("");
-                              }}
-                            >
-                              <span className="mr-2">
-                                {dataTranslate.take_a_photo_again}
-                              </span>
-                              <Ai.AiOutlineReload
-                                style={{ marginTop: "5px" }}
-                                color="white"
-                              />
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    ) : !open && istakePhoto ? (
-                      <div
-                        className="flex items-center justify-center w-full"
-                        onClick={() => setOpen(!open)}
+                <div>
+                  {fields?.some((item) => item.type == "file") && (
+                    <div className="mb-4" key={Math.random()}>
+                      {open && istakePhoto ? (
+                        <div className="flex flex-col">
+                          <CameraPhoto
+                            dataTranslate={dataTranslate}
+                            ContactImageURL={""}
+                            cameraCallback={(byte64) => {
+                              setIdentityImage(
+                                byte64.replace("data:image/png;base64,", "")
+                              );
+                              localStorage.setItem(
+                                "base64Img",
+                                byte64.replace("data:image/png;base64,", "")
+                              );
+                            }}
+                          />
+                          {identityImage.length > 0 && (
+                            <div className="flex justify-center">
+                              <button
+                                className="w-1/2 bg-slate-400 text-white font-normal text-lg py-2 px-0.5 rounded-xl flex justify-center mt-3"
+                                onClick={() => {
+                                  setOpen(!open);
+                                  setIdentityImage("");
+                                }}
+                              >
+                                <span className="mr-2">
+                                  {dataTranslate.take_a_photo_again}
+                                </span>
+                                <Ai.AiOutlineReload
+                                  style={{ marginTop: "5px" }}
+                                  color="white"
+                                />
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      ) : !open && istakePhoto ? (
+                        <div
+                          className="flex items-center justify-center w-full"
+                          onClick={() => setOpen(!open)}
+                        >
+                          <label
+                            className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 "
+                            htmlFor={item.id}
+                          >
+                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="32"
+                                height="32"
+                                fill="currentColor"
+                                className="bi bi-camera"
+                                viewBox="0 0 16 16"
+                                style={{ color: "#6b7280" }}
+                              >
+                                <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />{" "}
+                                <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />{" "}
+                              </svg>
+                              <p className="mb-2 text-sm text-gray-500">
+                                <span className="font-semibold">
+                                  {dataTranslate.click_to_take_a_photo}
+                                </span>
+                              </p>
+                            </div>
+                          </label>
+                        </div>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  )}
+                  {fields?.some((item) => item.type == "file") && (
+                    <div className="pb-4" key={Math.random()}>
+                      <button
+                        className="px-4 py-2 bg-indigo-400 text-white rounded-lg"
+                        onClick={() => setIsTakePhoto(!istakePhoto)}
                       >
-                        <label className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 ">
-                          <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="32"
-                              height="32"
-                              fill="currentColor"
-                              className="bi bi-camera"
-                              viewBox="0 0 16 16"
-                              style={{ color: "#6b7280" }}
-                            >
-                              <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />{" "}
-                              <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />{" "}
-                            </svg>
-                            <p className="mb-2 text-sm text-gray-500">
-                              <span className="font-semibold">
-                                {dataTranslate.click_to_take_a_photo}
-                              </span>
-                            </p>
-                          </div>
-                        </label>
-                      </div>
-                    ) : (
-                      <></>
-                    )}
-                  </div>
+                        {istakePhoto
+                          ? dataTranslate.get_file_from_your_device
+                          : dataTranslate.take_a_photo}
+                      </button>
+                    </div>
+                  )}
+                </div>
+                {fields?.length > 0 ? (
+                  <button
+                    className="px-4 py-2 bg-indigo-400 text-white rounded-lg"
+                    onClick={() => {
+                      alert(dataTranslate.result_saved);
+                    }}
+                  >
+                    {dataTranslate.submit}
+                  </button>
+                ) : (
+                  <h1 className="text-center">
+                    {dataTranslate?.form_data_not_found}
+                  </h1>
                 )}
-                {fields?.some((item) => item.type == "file") && (
-                  <div className="pb-4" key={Math.random()}>
-                    <button
-                      className="px-4 py-2 bg-indigo-400 text-white rounded-lg"
-                      onClick={() => setIsTakePhoto(!istakePhoto)}
-                    >
-                      {istakePhoto
-                        ? dataTranslate.get_file_from_your_device
-                        : dataTranslate.take_a_photo}
-                    </button>
-                  </div>
-                )}
-                <button
-                  className="px-4 py-2 bg-indigo-400 text-white rounded-lg"
-                  onClick={() => {
-                    alert(dataTranslate.result_saved);
-                  }}
-                >
-                  {dataTranslate.submit}
-                </button>
               </div>
             </div>
           </div>

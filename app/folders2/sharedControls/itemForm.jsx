@@ -39,10 +39,7 @@ export default function ItemForm({
             className="flex items-center justify-center w-full"
             key={Math.random()}
           >
-            <label
-              className="flex flex-col items-center justify-center w-full h-64 cursor-pointer   "
-              htmlFor={field.id}
-            >
+            <h1 className="flex flex-col items-center justify-center w-full h-64 cursor-pointer   ">
               <div className="flex flex-col items-center justify-center pt-5 pb-6">
                 <svg
                   className="w-10 h-10 mb-4 text-gray-500"
@@ -69,8 +66,8 @@ export default function ItemForm({
                   SVG, PNG, JPG or GIF (MAX. 800x400px)
                 </p>
               </div>
-              <input id={field.id} readOnly type="file" className="hidden" />
-            </label>
+              <input readOnly type="file" className="hidden" />
+            </h1>
           </div>
         </div>
       ) : field?.type == "heading" ? (
@@ -163,7 +160,6 @@ export default function ItemForm({
           <div className="relative z-0 w-full mb-6 group">
             <div className="flex items-center pl-3">
               <input
-                id={field.id}
                 readOnly
                 checked={field?.type == "radio" || field?.type == "checkbox"}
                 onChange={(e) =>
@@ -177,12 +173,9 @@ export default function ItemForm({
                 name="list-radio"
                 className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500  focus:ring-2 mr-4"
               />
-              <label
-                className="w-full py-3 ml-2 text-md font-medium text-gray-900"
-                htmlFor={field.id}
-              >
+              <h1 className="w-full py-3 ml-2 text-md font-medium text-gray-900">
                 {field.label}
-              </label>
+              </h1>
             </div>
           </div>
         </div>
@@ -209,12 +202,9 @@ export default function ItemForm({
             </div>
           </div>
           <div className="z-0 w-full mb-6 group">
-            <label
-              className="text-lg text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6"
-              htmlFor={field.id}
-            >
+            <h1 className="text-lg text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
               {field.type == "date" ? "" : field.label}
-            </label>
+            </h1>
             <select
               id={field.id}
               disabled
@@ -246,14 +236,10 @@ export default function ItemForm({
             </div>
           </div>
           <div className="z-0 w-full mb-6 group">
-            <label
-              className="text-lg text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6"
-              htmlFor={field.id}
-            >
+            <h1 className="text-lg text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
               {field.type == "date" ? "" : field.label}
-            </label>
+            </h1>
             <input
-              id={field.id}
               readOnly
               type={field.type}
               name={field.id}

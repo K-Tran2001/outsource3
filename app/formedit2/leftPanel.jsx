@@ -67,9 +67,7 @@ export default function LeftPanel({
         />
         <div
           className={`${
-            isDragging
-              ? "border-dashed border-2 border-indigo-400 rounded-lg m-4"
-              : ""
+            isDragging ? "border-dashed border-2 border-indigo-400 m-0" : ""
           }`}
         >
           <div className="p-2">

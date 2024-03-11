@@ -22,9 +22,9 @@ export default function MasterLeftSideBar() {
   ];
   return (
     <div className="fixed inset-y-0 l-0 z-50 block w-20 overflow-y-auto bg-slate-950 pb-4">
-      <div className="flex h-16 shrink-0 items-center justify-center">
+      <div className="flex h-16 shrink-0 items-center justify-center ">
         <Image
-          className="h-8 w-auto"
+          className=" w-auto h-8"
           src="/mark.svg"
           alt="Your Company"
           width={32}
