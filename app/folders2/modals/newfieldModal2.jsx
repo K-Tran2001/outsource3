@@ -44,6 +44,18 @@ export default function NewFieldModal2({
     "updatedBy",
     "duration",
   ];
+  const disableRequiredFieldList = [
+    "createdDate",
+    "createdBy",
+    "updatedDate",
+    "updatedBy",
+    "checkbox",
+    "radio",
+    "heading",
+    "divider",
+    "file",
+    "autoNumber",
+  ];
   const checkExistHideField = (typeInput) => {
     const result =
       fields["fieldSelectedList"].length > 0
@@ -52,14 +64,15 @@ export default function NewFieldModal2({
         : false;
     return result;
   };
+  const DEFAULT_DATA = {
+    id: Math.random(),
+    type: "text",
+    typeName: "Text",
+    required: false,
+  };
   React.useEffect(() => {
     if (!isEdit) {
-      setDataEdit({
-        ...data,
-        type: "text",
-        typeName: "Text",
-        required: false,
-      });
+      setDataEdit(DEFAULT_DATA);
     }
   }, []);
   return (
@@ -155,12 +168,16 @@ export default function NewFieldModal2({
                                   disabled={checkExistHideField(item.value)}
                                   id={item.value}
                                   checked={data?.type == item.value}
-                                  onChange={(e) =>
+                                  onChange={(e) => {
                                     setDataEdit({
-                                      ...data,
+                                      ...DEFAULT_DATA,
                                       type: e.target.value,
-                                    })
-                                  }
+                                      typeName: item.label,
+                                      values: [],
+                                      required: false,
+                                      config: {},
+                                    });
+                                  }}
                                   type="radio"
                                   value={item.value}
                                   name="list-radio"
@@ -376,6 +393,7 @@ export default function NewFieldModal2({
                 >
                   <input
                     id="required_checkbox"
+                    disabled={disableRequiredFieldList.includes(data?.type)}
                     type="checkbox"
                     className="sr-only peer"
                     checked={data?.required || false}
@@ -385,7 +403,13 @@ export default function NewFieldModal2({
                     value={data?.required || false}
                   />
                   <div className="w-11 h-6 bg-gray-200 rounded-full peer   peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-300"></div>
-                  <span className="ml-3 text-md font-medium ">
+                  <span
+                    className={`ml-3 text-md font-medium ${
+                      disableRequiredFieldList.includes(data?.type)
+                        ? "text-gray-300"
+                        : ""
+                    }`}
+                  >
                     {pageTranslate?.required}
                   </span>
                 </label>

@@ -21,5 +21,5 @@ module.exports = {
 	"API_TRANSLATE_URL_5":"https://script.google.com/macros/s/AKfycbzEz6oXfIilm0F9SiUfOLrtApG13F8UYYzKvudDpIVdVkhCDBPf_WaBXwwGLMFyY79j/exec",
   "SHEET_URL":"https://sheetdb.io/api/v1/dwyrwredid4si"
 
-  },
+  }
 }

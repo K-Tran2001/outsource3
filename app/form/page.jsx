@@ -70,11 +70,42 @@ export default function Form() {
 
     return generatedString;
   };
+  const [error, setError] = React.useState([]);
+  const onValidate = () => {
+    const ids = [];
+    for (const key in dataForm) {
+      if (dataForm.hasOwnProperty(key)) {
+        if (
+          dataForm[key].required === true &&
+          (dataForm[key].value === "" || dataForm[key].value == null)
+        ) {
+          ids.push(key);
+        }
+      }
+    }
+    setError(ids);
+    return ids.length == 0;
+  };
+  const onSubmit = () => {
+    if (onValidate()) {
+      alert(dataTranslate.result_saved);
+    }
+  };
   React.useEffect(() => {
-    setFields(JSON.parse(localStorage.getItem("formItem"))?.fields || []);
+    const data = JSON.parse(localStorage.getItem("formItem"))?.fields;
+    setFields(data || []);
     setHeadingForm(
       JSON.parse(localStorage.getItem("formItem"))?.headingForm || {}
     );
+    if (data.length > 0) {
+      const transformedArray = JSON.parse(
+        localStorage.getItem("formItem")
+      ).fields.reduce((result, item) => {
+        result[item.id] = { ...item, value: "" };
+        return result;
+      }, {});
+      setDataForm(transformedArray);
+    }
 
     // const transformedArray =
     //   JSON.parse(localStorage?.getItem("formItem")).fields == null
@@ -146,11 +177,14 @@ export default function Form() {
                           <div className="flex items-center pl-3">
                             <input
                               id={field.id}
-                              defaultChecked={dataForm[field.id]}
+                              defaultChecked={dataForm[field.id]?.value}
                               onBlur={(e) => {
                                 setDataForm({
                                   ...dataForm,
-                                  [field?.id]: e.target.checked,
+                                  [field?.id]: {
+                                    ...field,
+                                    value: e.target.checked,
+                                  },
                                 });
                               }}
                               type={field.type}
@@ -219,18 +253,25 @@ export default function Form() {
                               field.type === "autoNumber" ? "text" : field.type
                             }
                             name="floating_email"
-                            className="px-2 block py-3 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            className={`px-2 block py-3 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 ${
+                              error.includes(field.id)
+                                ? "border-red-500"
+                                : "focus:border-blue-600"
+                            } peer`}
                             placeholder=" "
                             readOnly={field.type === "autoNumber"}
                             defaultValue={
                               field.type === "autoNumber"
                                 ? autoGenCode(field?.config)
-                                : dataForm[field?.id]
+                                : dataForm[field?.id]?.value
                             }
                             onBlur={(e) => {
                               setDataForm({
                                 ...dataForm,
-                                [field?.id]: e.target.value,
+                                [field?.id]: {
+                                  ...field,
+                                  value: e.target.value,
+                                },
                               });
                             }}
                           />
@@ -436,7 +477,8 @@ export default function Form() {
                   <button
                     className="px-4 py-2 bg-indigo-400 text-white rounded-lg"
                     onClick={() => {
-                      alert(dataTranslate.result_saved);
+                      //alert(dataTranslate.result_saved);
+                      onSubmit();
                     }}
                   >
                     {dataTranslate.submit}
