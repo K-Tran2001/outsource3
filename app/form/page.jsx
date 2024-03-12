@@ -156,10 +156,10 @@ export default function Form() {
                               }}
                               type={field.type}
                               name="list-radio"
-                              className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500  focus:ring-2 mr-4"
+                              className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300"
                             />
                             <label
-                              className="w-full py-3 ml-2 text-lg font-medium text-gray-900"
+                              className="w-full py-3 ml-2 text-md text-gray-500"
                               htmlFor={field.id}
                             >
                               {field.label}
@@ -167,13 +167,17 @@ export default function Form() {
                           </div>
                         </div>
                       );
-                    } else if (field.type == "dropdown") {
+                    } else if (
+                      field.type == "dropdown" ||
+                      field.type == "contactList"
+                    ) {
                       return (
-                        <div
-                          className="relative z-0 w-full mb-6 group"
-                          key={Math.random()}
-                        >
+                        <div className=" w-full my-6 group" key={Math.random()}>
+                          <h1 className="w-full py-3  text-sm text-gray-500">
+                            {field.label}
+                          </h1>
                           <select
+                            id={field.id}
                             className={`border border-gray-300
                bg-gray-50  text-gray-900 text-lg rounded-lg  block w-full p-2.5`}
                             value={dataForm[field?.id]?.value}
@@ -194,9 +198,6 @@ export default function Form() {
                               </option>
                             ))}
                           </select>
-                          <h1 className="peer-focus:text-lg absolute text-lg text-gray-500 duration-300 transform -translate-y-10 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                            {field.type == "date" ? "" : field.label}
-                          </h1>
                         </div>
                       );
                     } else
@@ -231,7 +232,7 @@ export default function Form() {
                               });
                             }}
                           />
-                          <h1 className="peer-focus:text-lg absolute text-lg text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                          <h1 className="peer-focus:text-lg absolute text-lg text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                             {field.type == "date" ? "" : field.label}
                           </h1>
                         </div>

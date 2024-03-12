@@ -179,7 +179,7 @@ export default function ItemForm({
             </div>
           </div>
         </div>
-      ) : field?.type == "dropdown" ? (
+      ) : field?.type == "dropdown" || field?.type == "contactList" ? (
         <div
           className="mb-4  hover:border-gray-200 hover:border px-8 py-4   bg-gray-50 rounded-lg hover:shadow-md"
           key={Math.random()}

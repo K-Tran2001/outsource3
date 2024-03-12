@@ -52,7 +52,7 @@ const TopModal2 = ({
           rounded={"rounded-full"}
           border={"border border-blue-500"}
           pageTranslate={pageTranslate}
-          onClick={saveForm}
+          onClick={openForm}
           text={pageTranslate.open_form}
         />
 
