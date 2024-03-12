@@ -20,7 +20,7 @@ export default function ItemForm({
           onClick={() => setCurrentField({ ...field, index: index })}
         >
           <div className="relative flex-1 translate-y-[-0rem] translate-x-[0.5rem]">
-            <div className="absolute flex justify-end space-x-2 right-0 -translate-y-6 translate-x-8">
+            <div className="absolute flex justify-end space-x-2 right-0 -translate-y-3 translate-x-5">
               <button
                 className=" w-6 h-6 bg-indigo-100 flex justify-center items-center rounded-lg cursor-pointer"
                 onClick={handleEdit}
@@ -77,7 +77,7 @@ export default function ItemForm({
           onClick={() => setCurrentField({ ...field, index: index })}
         >
           <div className="relative flex-1  translate-y-[-0rem] translate-x-[0.5rem]">
-            <div className="absolute flex justify-end space-x-2 right-0 -translate-y-6 translate-x-8">
+            <div className="absolute flex justify-end space-x-2 right-0 -translate-y-3 translate-x-5">
               <button
                 className=" w-6 h-6 bg-indigo-100 flex justify-center items-center rounded-lg cursor-pointer"
                 onClick={handleEdit}
@@ -115,7 +115,7 @@ export default function ItemForm({
           onClick={() => setCurrentField({ ...field, index: index })}
         >
           <div className="relative flex-1  translate-y-[-0rem] translate-x-[0.5rem]">
-            <div className="absolute flex justify-end space-x-2 right-0 -translate-y-6 translate-x-8">
+            <div className="absolute flex justify-end space-x-2 right-0 -translate-y-3 translate-x-5">
               <button
                 className=" w-6 h-6 bg-indigo-100 flex justify-center items-center rounded-lg cursor-pointer"
                 onClick={handleEdit}
@@ -142,7 +142,7 @@ export default function ItemForm({
         >
           <div className="relative flex-1 translate-y-[-0rem] translate-x-[0.5rem]">
             <div
-              className={`absolute flex justify-end space-x-2 right-0 -translate-y-6 translate-x-8 block `}
+              className={`absolute flex justify-end space-x-2 right-0 -translate-y-3 translate-x-5 block `}
             >
               <button
                 className=" w-6 h-6 bg-indigo-100 flex justify-center items-center rounded-lg cursor-pointer"
@@ -188,7 +188,7 @@ export default function ItemForm({
           onClick={() => setCurrentField({ ...field, index: index })}
         >
           <div className="relative flex-1 translate-y-[-0rem] translate-x-[0.5rem]">
-            <div className="absolute flex justify-end space-x-2 right-0 -translate-y-6 translate-x-8">
+            <div className="absolute flex justify-end space-x-2 right-0 -translate-y-3 translate-x-5">
               <button
                 className=" w-6 h-6 bg-indigo-100 flex justify-center items-center rounded-lg cursor-pointer"
                 onClick={handleEdit}
@@ -204,7 +204,7 @@ export default function ItemForm({
             </div>
           </div>
           <div className="z-0 w-full mb-2 group">
-            <div className="flex text-lg text-sm text-gray-500  duration-300 transform -translate-y-0 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
+            <div className="mb-2 flex text-lg text-sm text-gray-500  duration-300 transform translate-y-1 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
               {field.type == "date" ? "" : field.label}
               {field.required == true && (
                 <>
@@ -231,7 +231,7 @@ export default function ItemForm({
           onClick={() => setCurrentField({ ...field, index: index })}
         >
           <div className="relative flex-1 translate-y-[-0rem] translate-x-[0.5rem]">
-            <div className="absolute flex justify-end space-x-2 right-0 -translate-y-6 translate-x-8">
+            <div className="absolute flex justify-end space-x-2 right-0 -translate-y-3 translate-x-5">
               <button
                 className=" w-6 h-6 bg-indigo-100 flex justify-center items-center rounded-lg cursor-pointer"
                 onClick={handleEdit}
@@ -247,7 +247,7 @@ export default function ItemForm({
             </div>
           </div>
           <div className="z-0 w-full mb-2 group">
-            <div className="flex text-lg text-sm text-gray-500  duration-300 transform -translate-y-0 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
+            <div className="flex text-lg text-sm text-gray-500  duration-300 transform translate-y-1 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
               {field.type == "date" ? "" : field.label}
               {field.required == true && (
                 <>
