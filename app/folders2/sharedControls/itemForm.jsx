@@ -56,7 +56,7 @@ export default function ItemForm({
                     d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                   />
                 </svg>
-                <p className="mb-2 text-sm text-gray-500 ">
+                <p className="mb-2 text-md text-gray-500 ">
                   <span className="font-semibold">
                     {pageTranslate.click_to_upload}
                   </span>{" "}
@@ -175,7 +175,7 @@ export default function ItemForm({
                 name="list-radio"
                 className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300"
               />
-              <h1 className="w-full py-3 ml-2 text-md font-medium text-gray-900">
+              <h1 className="w-full py-3 ml-2 text-md  text-gray-900">
                 {field.label}
               </h1>
             </div>
@@ -204,7 +204,7 @@ export default function ItemForm({
             </div>
           </div>
           <div className="z-0 w-full mb-2 group">
-            <div className="mb-2 flex text-lg text-sm text-gray-500  duration-300 transform translate-y-1 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
+            <div className="mb-2 flex text-lg text-md text-gray-500  duration-300 transform translate-y-1 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
               {field.type == "date" ? "" : field.label}
               {field.required == true && (
                 <>
@@ -220,7 +220,7 @@ export default function ItemForm({
               id={field.id}
               disabled
               className={`border border-gray-300 rounded-lg
-               bg-gray-50  text-gray-900 text-sm   block w-full p-1`}
+               bg-gray-50  text-gray-900 text-md   block w-full p-1`}
             ></select>
           </div>
         </div>
@@ -247,16 +247,16 @@ export default function ItemForm({
             </div>
           </div>
           <div className="z-0 w-full mb-2 group">
-            <div className="flex text-lg text-sm text-gray-500  duration-300 transform translate-y-1 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
-              {field.type == "date" ? "" : field.label}
+            <div className="flex text-lg text-md text-gray-500  duration-300 transform translate-y-1 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
+              {field.label}
               {field.required == true && (
-                <>
+                <div className="flex px-2">
                   <div className=" text-red-500 font-inliac">(</div>
                   <div className=" text-red-500 font-inliac">
                     {field.required == true ? "*" : ""}
                   </div>
                   <div className=" text-red-500 font-inliac">)</div>
-                </>
+                </div>
               )}
             </div>
             <input

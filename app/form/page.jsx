@@ -172,11 +172,12 @@ export default function Form() {
                     ) {
                       return (
                         <div className=" w-full my-6 group" key={Math.random()}>
-                          <h1 className="w-full py-3  text-sm text-gray-500">
-                            {`${field.label} ${
+                          <div className="w-full py-3  text-sm text-gray-500 flex">
+                            {`${field.label} `}
+                            <div className="text-red-500 px-2">{`${
                               field?.required == true ? "(*)" : ""
-                            }`}
-                          </h1>
+                            }`}</div>
+                          </div>
                           <select
                             id={field.id}
                             className={`border border-gray-300
@@ -201,7 +202,7 @@ export default function Form() {
                           </select>
                         </div>
                       );
-                    } else
+                    } else if (field.isShow === true) {
                       return (
                         // <div className="mb-4  rounded-lg " key={Math.random()}  >
                         //   <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
@@ -233,13 +234,15 @@ export default function Form() {
                               });
                             }}
                           />
-                          <h1 className="peer-focus:text-lg absolute text-lg text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                            {`${field.type == "date" ? "" : field.label} ${
+                          <div className="flex peer-focus:text-lg absolute text-lg text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                            {`${field.label} `}
+                            <div className="text-red-500 px-2">{`${
                               field.required == true ? "(*)" : ""
-                            }`}
-                          </h1>
+                            }`}</div>
+                          </div>
                         </div>
                       );
+                    }
                   } else {
                     return (
                       <div key={Math.random()}>

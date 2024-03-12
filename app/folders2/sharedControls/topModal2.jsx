@@ -39,7 +39,7 @@ const TopModal2 = ({
           className="w-8 h-8 mr-2"
           alt="Vietnam free icon"
         /> */}
-        <h1 className="text-lg">Contact Us</h1>
+        <h1 className="text-md font-medium">{pageTranslate.contact_us}</h1>
         <Ri.RiArrowDropDownLine className="w-5 h-5 " />
       </div>
       <TitleText title={"PHOENIX FORM"} />
@@ -59,7 +59,7 @@ const TopModal2 = ({
         <Button_Sm_NoBg
           bg={"bg-blue-500"}
           color={"text-white"}
-          size={"text-sm"}
+          size={"text-md"}
           padding={"px-3 py-2"}
           rounded={"rounded-full"}
           pageTranslate={pageTranslate}
@@ -69,7 +69,7 @@ const TopModal2 = ({
         <Button_Sm_NoBg
           bg={"bg-white"}
           color={"text-gray-800"}
-          size={"text-sm"}
+          size={"text-md"}
           bgHover={"hover:text-blue-500"}
           border={"border-l-2 "}
           padding={"px-3 py-2"}

@@ -231,6 +231,7 @@ export default function Folders2() {
       yes: "Yes",
       no: "No",
       cancel: "Cancel",
+      contact_us: "Contact Us",
     };
     const formDatab = new FormData();
 
@@ -266,7 +267,7 @@ export default function Folders2() {
     fetchData();
   }, [selectedLanguage]);
   return (
-    <div className="h-screen border-red-500 border rounded-md border-solid">
+    <div className="h-[calc(100vh-65px)] ">
       <ChooseLangComponent
         selectedLanguage={selectedLanguage}
         setSelectedlanguage={setSelectedlanguage}
@@ -275,11 +276,12 @@ export default function Folders2() {
         className="relative w-full my-4 h-[50px]"
         onClick={() => setVisible(true)}
       >
-        <h1 className="text-center text-3xl ">
+        <h1 className="text-center text-3xl hover:text-red-500">
           {dataTranslate.click_here_to_open_form_editor}
         </h1>
       </div>
-      <svg
+
+      {/* <svg
         className="inset-0 h-full w-full stroke-[#1118271a] h-[calc(100vh-250px)]"
         fill="none"
         onClick={() => setVisible(true)}
@@ -325,7 +327,7 @@ export default function Folders2() {
             <span className="sr-only">Loading...</span>
           </div>
         </div>
-      )}
+      )} */}
       <EditFormModal
         pageTranslate={dataTranslate}
         visible={visible}
