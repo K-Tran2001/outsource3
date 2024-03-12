@@ -68,10 +68,10 @@ export default function NewFieldModal2({
       aria-hidden="true"
       className={`fixed top-0 left-0 right-0 z-50 ${
         visibleModalNewField ? " bg-gray-100 bg-opacity-70" : "hidden"
-      } w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full h-[100vh] flex justify-center items-center`}
+      } w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full  flex justify-center items-center`}
     >
       <div className="w-full max-w-4xl max-h-full">
-        <div className="relative bg-blue-400 rounded-t-lg shadow ">
+        <div className="relative bg-indigo-400 rounded-t-lg shadow ">
           <button
             type="button"
             className="absolute top-3 right-2.5 text-gray-800 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
@@ -99,14 +99,14 @@ export default function NewFieldModal2({
             </svg>
             <span className="sr-only">Close modal</span>
           </button>
-          <div className="px-6 py-6 lg:px-8">
-            <h3 className="mb-4 text-xl font-medium text-gray-900 ">
+          <div className="p-4 lg:px-8">
+            <h3 className=" text-xl font-medium text-white ">
               {!isEdit ? pageTranslate?.new_field : pageTranslate?.edit_field}
             </h3>
           </div>
         </div>
         <div className="bg-white rounded-b-lg">
-          <div className="flex  w-full h-full">
+          <div className="flex  w-full ">
             {/* LEFT */}
             <div className="w-[50%]  p-4">
               <div className="space-y-6">
@@ -139,89 +139,109 @@ export default function NewFieldModal2({
                     <h1 className="block mb-2 text-md font-medium text-gray-900 ">
                       {pageTranslate?.field_type}
                     </h1>
-                    <div className="h-[400px] overflow-y-scroll overflow-hidden has-scrollbar">
+                    {!isEdit ? (
+                      <div className="h-[400px] overflow-y-scroll overflow-hidden has-scrollbar">
+                        <ul className="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg ">
+                          {options.map((item) => (
+                            <li
+                              className="w-full border-b border-gray-200 rounded-t-lg"
+                              key={Math.random() + ""}
+                            >
+                              <div className="flex items-center pl-3">
+                                <input
+                                  disabled={checkExistHideField(item.value)}
+                                  id={item.value}
+                                  checked={data?.type == item.value}
+                                  onChange={(e) =>
+                                    setDataEdit({
+                                      ...data,
+                                      type: e.target.value,
+                                    })
+                                  }
+                                  type="radio"
+                                  value={item.value}
+                                  name="list-radio"
+                                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
+                                />
+                                <label
+                                  className="w-full py-3 ml-2 text-sm font-medium text-gray-900"
+                                  htmlFor={item.value}
+                                >
+                                  {item.label}
+                                </label>
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : (
                       <ul className="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg ">
-                        {options.map((item) => (
-                          <li
-                            className="w-full border-b border-gray-200 rounded-t-lg"
-                            key={Math.random() + ""}
-                          >
-                            <div className="flex items-center pl-3">
-                              <input
-                                disabled={checkExistHideField(item.value)}
-                                id={item.value}
-                                checked={data?.type == item.value}
-                                onChange={(e) =>
-                                  setDataEdit({ ...data, type: e.target.value })
-                                }
-                                type="radio"
-                                value={item.value}
-                                name="list-radio"
-                                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
-                              />
-                              <label
-                                className="w-full py-3 ml-2 text-sm font-medium text-gray-900"
-                                htmlFor={item.value}
-                              >
-                                {item.label}
-                              </label>
-                            </div>
-                          </li>
-                        ))}
+                        <li
+                          className="w-full border-b border-gray-200 rounded-t-lg"
+                          key={Math.random() + ""}
+                        >
+                          <h1 className="w-full py-3 ml-2 text-sm font-medium text-gray-900">
+                            {data.type}
+                          </h1>
+                        </li>
                       </ul>
-                    </div>
+                    )}
                   </div>
                 )}
               </div>
             </div>
             {/* RIGHT */}
             <div className="w-[50%]  p-4">
-              <div className="mb-4">
-                <label
-                  className="block mb-2 text-md font-medium text-gray-900"
-                  htmlFor="title"
-                >
-                  {pageTranslate?.title}
-                </label>
-                <textarea
-                  id="title"
-                  type="text"
-                  name="label"
-                  className={`border border-gray-300 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 bg-transparent`}
-                  placeholder={pageTranslate?.title}
-                  required
-                  onBlur={(e) => {
-                    setDataEdit({
-                      ...data,
-                      title: e.target.value,
-                    });
-                  }}
-                  defaultValue={data?.title || ""}
-                />
-              </div>
-              <div className="mb-4">
-                <label
-                  className="block mb-2 text-md font-medium text-gray-900"
-                  htmlFor="discription"
-                >
-                  {pageTranslate?.discription}
-                </label>
-                <textarea
-                  id="discription"
-                  type="text"
-                  name="label"
-                  className={`border border-gray-300 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 bg-transparent`}
-                  placeholder={pageTranslate?.discription}
-                  required
-                  onBlur={(e) => {
-                    setDataEdit({
-                      ...data,
-                      discription: e.target.value,
-                    });
-                  }}
-                  defaultValue={data?.discription || ""}
-                />
-              </div>
+              {(data?.type === "heading" || data?.type === "headingForm") && (
+                <div>
+                  <div className="mb-4">
+                    <label
+                      className="block mb-2 text-md font-medium text-gray-900"
+                      htmlFor="title"
+                    >
+                      {pageTranslate?.title}
+                    </label>
+                    <textarea
+                      id="title"
+                      type="text"
+                      name="label"
+                      className={`border border-gray-300 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 bg-transparent`}
+                      placeholder={pageTranslate?.title}
+                      required
+                      onBlur={(e) => {
+                        setDataEdit({
+                          ...data,
+                          title: e.target.value,
+                        });
+                      }}
+                      defaultValue={data?.title || ""}
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label
+                      className="block mb-2 text-md font-medium text-gray-900"
+                      htmlFor="discription"
+                    >
+                      {pageTranslate?.discription}
+                    </label>
+                    <textarea
+                      id="discription"
+                      type="text"
+                      name="label"
+                      className={`border border-gray-300 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 bg-transparent`}
+                      placeholder={pageTranslate?.discription}
+                      required
+                      onBlur={(e) => {
+                        setDataEdit({
+                          ...data,
+                          discription: e.target.value,
+                        });
+                      }}
+                      defaultValue={data?.discription || ""}
+                    />
+                  </div>
+                </div>
+              )}
               {(data?.type == "dropdown" || data?.type == "contactList") && (
                 <div>
                   <label
@@ -393,7 +413,7 @@ export default function NewFieldModal2({
                 setError(false);
               }}
             >
-              {"EXIT"}
+              {pageTranslate.cancel}
             </button>
             <button
               type="button"
@@ -422,7 +442,7 @@ export default function NewFieldModal2({
                   if (data.type === "headingForm") {
                     setHeadingForm(data);
                     setVisibleModalNewField(false);
-                    setDataEdit({ label: "" });
+                    setDataEdit({ label: "", title: "", discription: "" });
                     setCurrentField(
                       !hideFieldList.includes(copyData.type) ? copyData : {}
                     );
@@ -435,7 +455,7 @@ export default function NewFieldModal2({
                     oldFields[copyData.index] = copyData;
                     setFields({ ...fields, fieldSelectedList: oldFields });
                     setVisibleModalNewField(false);
-                    setDataEdit({ label: "" });
+                    setDataEdit({ label: "", title: "", discription: "" });
                     setCurrentField(
                       !hideFieldList.includes(copyData.type) ? copyData : {}
                     );
@@ -446,7 +466,7 @@ export default function NewFieldModal2({
                 }
               }}
             >
-              {isEdit ? "EDIT" : "ADD"}
+              {isEdit ? pageTranslate.edit : pageTranslate.add}
             </button>
           </div>
         </div>

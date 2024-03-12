@@ -126,7 +126,7 @@ export default function CenterPanel({
                 {fields[type].length > 0 ? (
                   <div className="flex justify-center">
                     <button
-                      className="w-10 h-10 bg-blue-100 flex justify-center items-center rounded-lg"
+                      className="w-6 h-6 bg-blue-100 flex justify-center items-center rounded-lg"
                       onClick={() => {
                         setIsEdit(false);
                         setCurrentField({ label: "", type: "text" });
@@ -134,7 +134,7 @@ export default function CenterPanel({
                         setAddField(type);
                       }}
                     >
-                      <Bs.BsPlusSquare className="w-5 h-5 text-blue-500" />
+                      <Bs.BsPlusSquare className="w-4 h-4 text-blue-500" />
                     </button>
                   </div>
                 ) : (

@@ -213,6 +213,7 @@ export default function Folders2() {
       field_type: "Field Type",
       add: "Add",
       edit: "Edit",
+      exit: "Exit",
       enter_a_field_name: "Enter a field name",
       please_allow_the_camera_to_access_the_app: `Please "Allow" the camera to access the app!`,
       save_success: "Save Success!",
@@ -229,6 +230,7 @@ export default function Folders2() {
       do_you_want_to_open_the_form: "Do you want to open the form?",
       yes: "Yes",
       no: "No",
+      cancel: "Cancel",
     };
     const formDatab = new FormData();
 

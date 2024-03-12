@@ -20,18 +20,18 @@ export default function ItemForm({
           onClick={() => setCurrentField({ ...field, index: index })}
         >
           <div className="relative flex-1 translate-y-[-0rem] translate-x-[0.5rem]">
-            <div className="flex justify-end space-x-4">
+            <div className="absolute flex justify-end space-x-2 right-0 -translate-y-6 translate-x-8">
               <button
-                className=" w-10 h-10 bg-indigo-100 flex justify-center items-center rounded-lg cursor-pointer"
+                className=" w-6 h-6 bg-indigo-100 flex justify-center items-center rounded-lg cursor-pointer"
                 onClick={handleEdit}
               >
-                <Ci.CiEdit className="w-5 h-5 text-indigo-500" />
+                <Ci.CiEdit className="w-4 h-4 text-indigo-500" />
               </button>
               <button
-                className=" w-10 h-10 bg-red-100 flex justify-center items-center rounded-lg"
+                className=" w-6 h-6 bg-red-100 flex justify-center items-center rounded-lg"
                 onClick={handleDelete}
               >
-                <Ai.AiOutlineDelete className="w-5 h-5 text-red-500" />
+                <Ai.AiOutlineDelete className="w-4 h-4 text-red-500" />
               </button>
             </div>
           </div>
@@ -77,18 +77,18 @@ export default function ItemForm({
           onClick={() => setCurrentField({ ...field, index: index })}
         >
           <div className="relative flex-1  translate-y-[-0rem] translate-x-[0.5rem]">
-            <div className="flex justify-end space-x-4">
+            <div className="absolute flex justify-end space-x-2 right-0 -translate-y-6 translate-x-8">
               <button
-                className=" w-10 h-10 bg-indigo-100 flex justify-center items-center rounded-lg cursor-pointer"
+                className=" w-6 h-6 bg-indigo-100 flex justify-center items-center rounded-lg cursor-pointer"
                 onClick={handleEdit}
               >
-                <Ci.CiEdit className="w-5 h-5 text-indigo-500" />
+                <Ci.CiEdit className="w-4 h-4 text-indigo-500" />
               </button>
               <button
-                className=" w-10 h-10 bg-red-100 flex justify-center items-center rounded-lg"
+                className=" w-6 h-6 bg-red-100 flex justify-center items-center rounded-lg"
                 onClick={handleDelete}
               >
-                <Ai.AiOutlineDelete className="w-5 h-5 text-red-500" />
+                <Ai.AiOutlineDelete className="w-4 h-4 text-red-500" />
               </button>
             </div>
           </div>
@@ -115,18 +115,18 @@ export default function ItemForm({
           onClick={() => setCurrentField({ ...field, index: index })}
         >
           <div className="relative flex-1  translate-y-[-0rem] translate-x-[0.5rem]">
-            <div className="flex justify-end space-x-4">
+            <div className="absolute flex justify-end space-x-2 right-0 -translate-y-6 translate-x-8">
               <button
-                className=" w-10 h-10 bg-indigo-100 flex justify-center items-center rounded-lg cursor-pointer"
+                className=" w-6 h-6 bg-indigo-100 flex justify-center items-center rounded-lg cursor-pointer"
                 onClick={handleEdit}
               >
-                <Ci.CiEdit className="w-5 h-5 text-indigo-500" />
+                <Ci.CiEdit className="w-4 h-4 text-indigo-500" />
               </button>
               <button
-                className=" w-10 h-10 bg-red-100 flex justify-center items-center rounded-lg"
+                className=" w-6 h-6 bg-red-100 flex justify-center items-center rounded-lg"
                 onClick={handleDelete}
               >
-                <Ai.AiOutlineDelete className="w-5 h-5 text-red-500" />
+                <Ai.AiOutlineDelete className="w-4 h-4 text-red-500" />
               </button>
             </div>
           </div>
@@ -141,37 +141,39 @@ export default function ItemForm({
           onClick={() => setCurrentField({ ...field, index: index })}
         >
           <div className="relative flex-1 translate-y-[-0rem] translate-x-[0.5rem]">
-            <div className={`flex justify-end space-x-4 block `}>
+            <div
+              className={`absolute flex justify-end space-x-2 right-0 -translate-y-6 translate-x-8 block `}
+            >
               <button
-                className=" w-10 h-10 bg-indigo-100 flex justify-center items-center rounded-lg cursor-pointer"
+                className=" w-6 h-6 bg-indigo-100 flex justify-center items-center rounded-lg cursor-pointer"
                 onClick={handleEdit}
               >
-                <Ci.CiEdit className="w-5 h-5 text-indigo-500" />
+                <Ci.CiEdit className="w-4 h-4 text-indigo-500" />
               </button>
               <button
-                className=" w-10 h-10 bg-red-100 flex justify-center items-center rounded-lg"
+                className=" w-6 h-6 bg-red-100 flex justify-center items-center rounded-lg"
                 onClick={handleDelete}
               >
-                <Ai.AiOutlineDelete className="w-5 h-5 text-red-500" />
+                <Ai.AiOutlineDelete className="w-4 h-4 text-red-500" />
               </button>
             </div>
           </div>
 
-          <div className="relative z-0 w-full mb-6 group">
+          <div className="relative z-0 w-full  group">
             <div className="flex items-center pl-3">
               <input
                 readOnly
-                checked={field?.type == "radio" || field?.type == "checkbox"}
-                onChange={(e) =>
-                  setCurrentField({
-                    ...field,
-                    index: index,
-                  })
-                }
+                checked={true}
+                // onChange={(e) =>
+                //   setCurrentField({
+                //     ...field,
+                //     index: index,
+                //   })
+                // }
                 type={field.type}
                 value={field.type}
                 name="list-radio"
-                className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500  focus:ring-2 mr-4"
+                className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300"
               />
               <h1 className="w-full py-3 ml-2 text-md font-medium text-gray-900">
                 {field.label}
@@ -186,30 +188,30 @@ export default function ItemForm({
           onClick={() => setCurrentField({ ...field, index: index })}
         >
           <div className="relative flex-1 translate-y-[-0rem] translate-x-[0.5rem]">
-            <div className="flex justify-end space-x-4">
+            <div className="absolute flex justify-end space-x-2 right-0 -translate-y-6 translate-x-8">
               <button
-                className=" w-10 h-10 bg-indigo-100 flex justify-center items-center rounded-lg cursor-pointer"
+                className=" w-6 h-6 bg-indigo-100 flex justify-center items-center rounded-lg cursor-pointer"
                 onClick={handleEdit}
               >
-                <Ci.CiEdit className="w-5 h-5 text-indigo-500" />
+                <Ci.CiEdit className="w-4 h-4 text-indigo-500" />
               </button>
               <button
-                className=" w-10 h-10 bg-red-100 flex justify-center items-center rounded-lg"
+                className=" w-6 h-6 bg-red-100 flex justify-center items-center rounded-lg"
                 onClick={handleDelete}
               >
-                <Ai.AiOutlineDelete className="w-5 h-5 text-red-500" />
+                <Ai.AiOutlineDelete className="w-4 h-4 text-red-500" />
               </button>
             </div>
           </div>
-          <div className="z-0 w-full mb-6 group">
-            <h1 className="text-lg text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
+          <div className="z-0 w-full mb-2 group">
+            <h1 className="text-lg text-sm text-gray-500  duration-300 transform -translate-y-0 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
               {field.type == "date" ? "" : field.label}
             </h1>
             <select
               id={field.id}
               disabled
               className={`border border-gray-300 rounded-lg
-               bg-gray-50  text-gray-900 text-sm   block w-full p-2.5`}
+               bg-gray-50  text-gray-900 text-sm   block w-full p-1`}
             ></select>
           </div>
         </div>
@@ -220,24 +222,26 @@ export default function ItemForm({
           onClick={() => setCurrentField({ ...field, index: index })}
         >
           <div className="relative flex-1 translate-y-[-0rem] translate-x-[0.5rem]">
-            <div className="flex justify-end space-x-4">
+            <div className="absolute flex justify-end space-x-2 right-0 -translate-y-6 translate-x-8">
               <button
-                className=" w-10 h-10 bg-indigo-100 flex justify-center items-center rounded-lg cursor-pointer"
+                className=" w-6 h-6 bg-indigo-100 flex justify-center items-center rounded-lg cursor-pointer"
                 onClick={handleEdit}
               >
-                <Ci.CiEdit className="w-5 h-5 text-indigo-500" />
+                <Ci.CiEdit className="w-4 h-4 text-indigo-500" />
               </button>
               <button
-                className=" w-10 h-10 bg-red-100 flex justify-center items-center rounded-lg"
+                className=" w-6 h-6 bg-red-100 flex justify-center items-center rounded-lg"
                 onClick={handleDelete}
               >
-                <Ai.AiOutlineDelete className="w-5 h-5 text-red-500" />
+                <Ai.AiOutlineDelete className="w-4 h-4 text-red-500" />
               </button>
             </div>
           </div>
-          <div className="z-0 w-full mb-6 group">
-            <h1 className="text-lg text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
-              {field.type == "date" ? "" : field.label}
+          <div className="z-0 w-full mb-2 group">
+            <h1 className="text-lg text-sm text-gray-500  duration-300 transform -translate-y-0 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
+              {field.type == "date"
+                ? ""
+                : field.label + (field.required == true ? "(*)" : "")}
             </h1>
             <input
               readOnly

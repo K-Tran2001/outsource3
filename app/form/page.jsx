@@ -113,7 +113,7 @@ export default function Form() {
               <div className=" lg:p-12 p-8">
                 <div className="py-8">
                   <h1 className="text-3xl font-bold text-black text-center pb-4">
-                    {headingForm.name}
+                    {headingForm.title}
                   </h1>
                   <h1 className="text-xl font-bold text-black  pb-4">
                     {headingForm.discription}
@@ -156,7 +156,7 @@ export default function Form() {
                               }}
                               type={field.type}
                               name="list-radio"
-                              className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300"
+                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
                             />
                             <label
                               className="w-full py-3 ml-2 text-md text-gray-500"
