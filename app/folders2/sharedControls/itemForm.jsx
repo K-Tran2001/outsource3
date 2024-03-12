@@ -204,9 +204,18 @@ export default function ItemForm({
             </div>
           </div>
           <div className="z-0 w-full mb-2 group">
-            <h1 className="text-lg text-sm text-gray-500  duration-300 transform -translate-y-0 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
+            <div className="flex text-lg text-sm text-gray-500  duration-300 transform -translate-y-0 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
               {field.type == "date" ? "" : field.label}
-            </h1>
+              {field.required == true && (
+                <>
+                  <div className=" text-red-500 font-inliac">(</div>
+                  <div className=" text-red-500 font-inliac">
+                    {field.required == true ? "*" : ""}
+                  </div>
+                  <div className=" text-red-500 font-inliac">)</div>
+                </>
+              )}
+            </div>
             <select
               id={field.id}
               disabled
@@ -238,11 +247,18 @@ export default function ItemForm({
             </div>
           </div>
           <div className="z-0 w-full mb-2 group">
-            <h1 className="text-lg text-sm text-gray-500  duration-300 transform -translate-y-0 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
-              {field.type == "date"
-                ? ""
-                : field.label + (field.required == true ? "(*)" : "")}
-            </h1>
+            <div className="flex text-lg text-sm text-gray-500  duration-300 transform -translate-y-0 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
+              {field.type == "date" ? "" : field.label}
+              {field.required == true && (
+                <>
+                  <div className=" text-red-500 font-inliac">(</div>
+                  <div className=" text-red-500 font-inliac">
+                    {field.required == true ? "*" : ""}
+                  </div>
+                  <div className=" text-red-500 font-inliac">)</div>
+                </>
+              )}
+            </div>
             <input
               readOnly
               type={field.type}

@@ -136,10 +136,13 @@ export default function NewFieldModal2({
                 </div>
                 {data?.type != "headingForm" && (
                   <div>
-                    <h1 className="block mb-2 text-md font-medium text-gray-900 ">
-                      {pageTranslate?.field_type}
-                    </h1>
-                    {!isEdit ? (
+                    <div className="block mb-2 text-md font-medium text-gray-900 flex">
+                      {`${pageTranslate?.field_type} `}
+                      <div className="text-red-500 px-2">
+                        {isEdit == true ? data.type : ""}
+                      </div>
+                    </div>
+                    {!isEdit && (
                       <div className="h-[400px] overflow-y-scroll overflow-hidden has-scrollbar">
                         <ul className="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg ">
                           {options.map((item) => (
@@ -174,17 +177,6 @@ export default function NewFieldModal2({
                           ))}
                         </ul>
                       </div>
-                    ) : (
-                      <ul className="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg ">
-                        <li
-                          className="w-full border-b border-gray-200 rounded-t-lg"
-                          key={Math.random() + ""}
-                        >
-                          <h1 className="w-full py-3 ml-2 text-sm font-medium text-gray-900">
-                            {data.type}
-                          </h1>
-                        </li>
-                      </ul>
                     )}
                   </div>
                 )}
@@ -244,12 +236,10 @@ export default function NewFieldModal2({
               )}
               {(data?.type == "dropdown" || data?.type == "contactList") && (
                 <div>
-                  <label
-                    className="block mb-2 text-md font-medium text-gray-900"
-                    htmlFor="values_contact"
-                  >
-                    {pageTranslate?.values}
-                  </label>
+                  <div className="block mb-2 text-md font-medium text-gray-900 flex">
+                    {`${pageTranslate?.values}`}
+                    <div className="text-red-500 px-2">(,)</div>
+                  </div>
                   <textarea
                     id="values_contact"
                     type="text"

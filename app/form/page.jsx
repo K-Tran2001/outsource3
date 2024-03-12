@@ -70,7 +70,6 @@ export default function Form() {
 
     return generatedString;
   };
-
   React.useEffect(() => {
     setFields(JSON.parse(localStorage.getItem("formItem"))?.fields || []);
     setHeadingForm(
@@ -162,7 +161,7 @@ export default function Form() {
                               className="w-full py-3 ml-2 text-md text-gray-500"
                               htmlFor={field.id}
                             >
-                              {field.label}
+                              {`${field.label}`}
                             </label>
                           </div>
                         </div>
@@ -174,7 +173,9 @@ export default function Form() {
                       return (
                         <div className=" w-full my-6 group" key={Math.random()}>
                           <h1 className="w-full py-3  text-sm text-gray-500">
-                            {field.label}
+                            {`${field.label} ${
+                              field?.required == true ? "(*)" : ""
+                            }`}
                           </h1>
                           <select
                             id={field.id}
@@ -233,177 +234,190 @@ export default function Form() {
                             }}
                           />
                           <h1 className="peer-focus:text-lg absolute text-lg text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                            {field.type == "date" ? "" : field.label}
+                            {`${field.type == "date" ? "" : field.label} ${
+                              field.required == true ? "(*)" : ""
+                            }`}
                           </h1>
                         </div>
                       );
                   } else {
-                    if (!istakePhoto) {
-                      return (
-                        <div key={Math.random()}>
-                          <div
-                            className="mb-4 flex items-center justify-center w-full"
-                            key={Math.random()}
-                          >
-                            {identityImage.length > 0 && !istakePhoto ? (
-                              <img
-                                src={identityImage}
-                                alt="Uploaded"
-                                style={{ maxWidth: "100%", maxHeight: "400px" }}
-                              />
-                            ) : (
-                              <div key={Math.random()} className="w-full">
-                                <label
-                                  htmlFor={field.id}
-                                  className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50"
+                    return (
+                      <div key={Math.random()}>
+                        {!istakePhoto && (
+                          <div key={Math.random()}>
+                            <div
+                              className="mb-4 flex items-center justify-center w-full"
+                              key={Math.random()}
+                            >
+                              {identityImage.length > 0 && !istakePhoto ? (
+                                <img
+                                  src={identityImage}
+                                  alt="Uploaded"
+                                  style={{
+                                    maxWidth: "100%",
+                                    maxHeight: "400px",
+                                  }}
+                                />
+                              ) : (
+                                <div key={Math.random()} className="w-full">
+                                  <label
+                                    htmlFor={field.id}
+                                    className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50"
+                                  >
+                                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                      <svg
+                                        className="w-8 h-8 mb-4 text-gray-500"
+                                        aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 20 16"
+                                      >
+                                        <path
+                                          stroke="currentColor"
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
+                                          strokeWidth="2"
+                                          d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                                        />
+                                      </svg>
+                                      <p className="mb-2 text-sm text-gray-500">
+                                        <span className="font-semibold">
+                                          {dataTranslate.click_to_upload}
+                                        </span>
+                                        {dataTranslate.or_drag_and_drop}{" "}
+                                      </p>
+                                      <p className="text-xs text-gray-500">
+                                        SVG, PNG, JPG or GIF (MAX. 800x400px)
+                                      </p>
+                                    </div>
+                                    <input
+                                      id={field.id}
+                                      type="file"
+                                      className="hidden"
+                                      onChange={(e) => handleImageUpload(e)}
+                                    />
+                                  </label>
+                                </div>
+                              )}
+                            </div>
+                            {identityImage.length > 0 && (
+                              <div className="flex justify-center">
+                                <button
+                                  className="w-1/2 bg-slate-400 text-white font-normal text-lg py-2 px-0.5 rounded-xl flex justify-center mt-3"
+                                  onClick={() => {
+                                    setOpen(!open);
+                                    setIdentityImage("");
+                                  }}
                                 >
-                                  <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                                    <svg
-                                      className="w-8 h-8 mb-4 text-gray-500"
-                                      aria-hidden="true"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      fill="none"
-                                      viewBox="0 0 20 16"
-                                    >
-                                      <path
-                                        stroke="currentColor"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-                                      />
-                                    </svg>
-                                    <p className="mb-2 text-sm text-gray-500">
-                                      <span className="font-semibold">
-                                        {dataTranslate.click_to_upload}
-                                      </span>
-                                      {dataTranslate.or_drag_and_drop}{" "}
-                                    </p>
-                                    <p className="text-xs text-gray-500">
-                                      SVG, PNG, JPG or GIF (MAX. 800x400px)
-                                    </p>
-                                  </div>
-                                  <input
-                                    id={field.id}
-                                    type="file"
-                                    className="hidden"
-                                    onChange={(e) => handleImageUpload(e)}
+                                  <span className="mr-2">
+                                    {dataTranslate.take_a_photo_again}
+                                  </span>
+                                  <Ai.AiOutlineReload
+                                    style={{ marginTop: "5px" }}
+                                    color="white"
                                   />
-                                </label>
+                                </button>
                               </div>
                             )}
                           </div>
-                          {identityImage.length > 0 && (
-                            <div className="flex justify-center">
+                        )}
+                        <div>
+                          {fields?.some((item) => item.type == "file") && (
+                            <div className="mb-4" key={Math.random()}>
+                              {open && istakePhoto ? (
+                                <div className="flex flex-col">
+                                  <CameraPhoto
+                                    dataTranslate={dataTranslate}
+                                    ContactImageURL={""}
+                                    cameraCallback={(byte64) => {
+                                      setIdentityImage(
+                                        byte64.replace(
+                                          "data:image/png;base64,",
+                                          ""
+                                        )
+                                      );
+                                      localStorage.setItem(
+                                        "base64Img",
+                                        byte64.replace(
+                                          "data:image/png;base64,",
+                                          ""
+                                        )
+                                      );
+                                    }}
+                                  />
+                                  {identityImage.length > 0 && (
+                                    <div className="flex justify-center">
+                                      <button
+                                        className="w-1/2 bg-slate-400 text-white font-normal text-lg py-2 px-0.5 rounded-xl flex justify-center mt-3"
+                                        onClick={() => {
+                                          setOpen(!open);
+                                          setIdentityImage("");
+                                        }}
+                                      >
+                                        <span className="mr-2">
+                                          {dataTranslate.take_a_photo_again}
+                                        </span>
+                                        <Ai.AiOutlineReload
+                                          style={{ marginTop: "5px" }}
+                                          color="white"
+                                        />
+                                      </button>
+                                    </div>
+                                  )}
+                                </div>
+                              ) : !open && istakePhoto ? (
+                                <div
+                                  className="flex items-center justify-center w-full"
+                                  onClick={() => setOpen(!open)}
+                                >
+                                  <div className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 ">
+                                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="32"
+                                        height="32"
+                                        fill="currentColor"
+                                        className="bi bi-camera"
+                                        viewBox="0 0 16 16"
+                                        style={{ color: "#6b7280" }}
+                                      >
+                                        <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />{" "}
+                                        <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />{" "}
+                                      </svg>
+                                      <p className="mb-2 text-sm text-gray-500">
+                                        <span className="font-semibold">
+                                          {dataTranslate.click_to_take_a_photo}
+                                        </span>
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              ) : (
+                                <></>
+                              )}
+                            </div>
+                          )}
+                          {fields?.some((item) => item.type == "file") && (
+                            <div
+                              className="pb-4 flex justify-end"
+                              key={Math.random()}
+                            >
                               <button
-                                className="w-1/2 bg-slate-400 text-white font-normal text-lg py-2 px-0.5 rounded-xl flex justify-center mt-3"
-                                onClick={() => {
-                                  setOpen(!open);
-                                  setIdentityImage("");
-                                }}
+                                className="px-4 py-2 bg-indigo-400 text-white rounded-lg"
+                                onClick={() => setIsTakePhoto(!istakePhoto)}
                               >
-                                <span className="mr-2">
-                                  {dataTranslate.take_a_photo_again}
-                                </span>
-                                <Ai.AiOutlineReload
-                                  style={{ marginTop: "5px" }}
-                                  color="white"
-                                />
+                                {istakePhoto
+                                  ? dataTranslate.get_file_from_your_device
+                                  : dataTranslate.take_a_photo}
                               </button>
                             </div>
                           )}
                         </div>
-                      );
-                    }
+                      </div>
+                    );
                   }
                 })}
 
-                <div>
-                  {fields?.some((item) => item.type == "file") && (
-                    <div className="mb-4" key={Math.random()}>
-                      {open && istakePhoto ? (
-                        <div className="flex flex-col">
-                          <CameraPhoto
-                            dataTranslate={dataTranslate}
-                            ContactImageURL={""}
-                            cameraCallback={(byte64) => {
-                              setIdentityImage(
-                                byte64.replace("data:image/png;base64,", "")
-                              );
-                              localStorage.setItem(
-                                "base64Img",
-                                byte64.replace("data:image/png;base64,", "")
-                              );
-                            }}
-                          />
-                          {identityImage.length > 0 && (
-                            <div className="flex justify-center">
-                              <button
-                                className="w-1/2 bg-slate-400 text-white font-normal text-lg py-2 px-0.5 rounded-xl flex justify-center mt-3"
-                                onClick={() => {
-                                  setOpen(!open);
-                                  setIdentityImage("");
-                                }}
-                              >
-                                <span className="mr-2">
-                                  {dataTranslate.take_a_photo_again}
-                                </span>
-                                <Ai.AiOutlineReload
-                                  style={{ marginTop: "5px" }}
-                                  color="white"
-                                />
-                              </button>
-                            </div>
-                          )}
-                        </div>
-                      ) : !open && istakePhoto ? (
-                        <div
-                          className="flex items-center justify-center w-full"
-                          onClick={() => setOpen(!open)}
-                        >
-                          <label
-                            className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 "
-                            htmlFor={item.id}
-                          >
-                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="32"
-                                height="32"
-                                fill="currentColor"
-                                className="bi bi-camera"
-                                viewBox="0 0 16 16"
-                                style={{ color: "#6b7280" }}
-                              >
-                                <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />{" "}
-                                <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />{" "}
-                              </svg>
-                              <p className="mb-2 text-sm text-gray-500">
-                                <span className="font-semibold">
-                                  {dataTranslate.click_to_take_a_photo}
-                                </span>
-                              </p>
-                            </div>
-                          </label>
-                        </div>
-                      ) : (
-                        <></>
-                      )}
-                    </div>
-                  )}
-                  {fields?.some((item) => item.type == "file") && (
-                    <div className="pb-4" key={Math.random()}>
-                      <button
-                        className="px-4 py-2 bg-indigo-400 text-white rounded-lg"
-                        onClick={() => setIsTakePhoto(!istakePhoto)}
-                      >
-                        {istakePhoto
-                          ? dataTranslate.get_file_from_your_device
-                          : dataTranslate.take_a_photo}
-                      </button>
-                    </div>
-                  )}
-                </div>
                 {fields?.length > 0 ? (
                   <button
                     className="px-4 py-2 bg-indigo-400 text-white rounded-lg"
