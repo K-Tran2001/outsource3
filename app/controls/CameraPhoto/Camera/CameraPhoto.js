@@ -22,8 +22,6 @@ function CameraPhoto({ cameraCallback,ContactImageURL,dataTranslate }) {
       });
     }
   }
-  console.log("ContactImageURL",ContactImageURL);
-  console.log("dataUri",dataUri);
   const isFullscreen = false;
   return (
     <div>
