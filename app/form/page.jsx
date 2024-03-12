@@ -328,13 +328,14 @@ export default function Form() {
                                 <div className="flex flex-col">
                                   <CameraPhoto
                                     dataTranslate={dataTranslate}
-                                    ContactImageURL={""}
+                                    ContactImageURL={identityImage}
                                     cameraCallback={(byte64) => {
                                       setIdentityImage(
-                                        byte64.replace(
-                                          "data:image/png;base64,",
-                                          ""
-                                        )
+                                        // byte64.replace(
+                                        //   "data:image/png;base64,",
+                                        //   ""
+                                        // )
+                                        byte64
                                       );
                                       localStorage.setItem(
                                         "base64Img",
@@ -413,11 +414,21 @@ export default function Form() {
                             </div>
                           )}
                         </div>
+                        {/* Take a photo */}
+
+                        {/*  */}
                       </div>
                     );
                   }
                 })}
-
+                {/* <img
+                  src={identityImage}
+                  alt="Uploaded"
+                  style={{
+                    maxWidth: "100%",
+                    maxHeight: "400px",
+                  }}
+                /> */}
                 {fields?.length > 0 ? (
                   <button
                     className="px-4 py-2 bg-indigo-400 text-white rounded-lg"
