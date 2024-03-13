@@ -122,27 +122,8 @@ export default function LeftPanel({
             </StrictModeDroppable>
           </div>
         </div>
-        {/* <div className="flex justify-between items-center my-4">
-          <button
-            className="text-sm font-medium text-blue-500"
-            data-modal-target="extralarge-modal"
-            data-modal-toggle="extralarge-modal"
-            onClick={() => {
-              setIsEdit(false);
-              setDataEdit({ label: "", type: "text", typeName: "Text" });
-              setVisibleModalNewField(true);
-              setAddField(type);
-            }}
-          >
-            {pageTranslate?.new_field}
-          </button>
-        </div> */}
+
         <div className="absolute bottom-0 w-full p-0 bg-gray_100">
-          {/* <div className="flex justify-between items-center mb-4">
-            <div className="text-lg font-bold ">
-              {pageTranslate?.form_elements}
-            </div>
-          </div> */}
           <TitleText
             title={pageTranslate?.form_elements}
             padding={"px-4 py-2"}

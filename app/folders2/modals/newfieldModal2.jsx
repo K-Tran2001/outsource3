@@ -115,9 +115,6 @@ export default function NewFieldModal2({
             <span className="sr-only">Close modal</span>
           </button>
           <div className="p-4 lg:px-8">
-            {/* <h3 className=" text-xl font-medium text-white ">
-              {!isEdit ? pageTranslate?.new_field : pageTranslate?.edit_field}
-            </h3> */}
             <TitleText
               title={
                 !isEdit ? pageTranslate?.new_field : pageTranslate?.edit_field

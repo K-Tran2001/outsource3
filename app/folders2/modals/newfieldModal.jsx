@@ -13,10 +13,6 @@ export default function NewFieldModal({
   setCurrentField,
 }) {
   const [error, setError] = React.useState(false);
-  const [selectedOption, setSelectedOption] = React.useState({
-    value: data?.type,
-    label: data?.typeName,
-  });
   var options = [
     { disable: false, value: "text", label: "Text" },
     { disable: false, value: "number", label: "Number" },
@@ -135,153 +131,6 @@ export default function NewFieldModal({
                 </label>
                 <div className="h-[200px] overflow-y-scroll overflow-hidden">
                   <ul className="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg ">
-                    {/* <li className="w-full border-b border-gray-200 rounded-t-lg">
-                      <div className="flex items-center pl-3">
-                        <input
-                          id="text"
-                          checked={data?.type == "text"}
-                          onChange={(e) =>
-                            setDataEdit({ ...data, type: e.target.value })
-                          }
-                          type="radio"
-                          value="text"
-                          name="list-radio"
-                          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
-                        />
-                        <label
-                          className="w-full py-3 ml-2 text-sm font-medium text-gray-900"
-                          htmlFor="text"
-                        >
-                          Text
-                        </label>
-                      </div>
-                    </li>
-                    <li className="w-full border-b border-gray-200 rounded-t-lg">
-                      <div className="flex items-center pl-3">
-                        <input
-                          id="number"
-                          checked={data?.type == "number"}
-                          onChange={(e) =>
-                            setDataEdit({ ...data, type: e.target.value })
-                          }
-                          type="radio"
-                          value="number"
-                          name="list-radio"
-                          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
-                        />
-                        <label
-                          className="w-full py-3 ml-2 text-sm font-medium text-gray-900"
-                          htmlFor="number"
-                        >
-                          Number
-                        </label>
-                      </div>
-                    </li>
-                    <li className="w-full border-b border-gray-200 rounded-t-lg">
-                      <div className="flex items-center pl-3">
-                        <input
-                          id="date"
-                          checked={data?.type == "date"}
-                          onChange={(e) =>
-                            setDataEdit({ ...data, type: e.target.value })
-                          }
-                          type="radio"
-                          value="date"
-                          name="list-radio"
-                          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
-                        />
-                        <label
-                          className="w-full py-3 ml-2 text-sm font-medium text-gray-900"
-                          htmlFor="date"
-                        >
-                          DateTime
-                        </label>
-                      </div>
-                    </li>
-                    <li className="w-full border-b border-gray-200 rounded-t-lg">
-                      <div className="flex items-center pl-3">
-                        <input
-                          id="dropdown"
-                          checked={data?.type == "dropdown"}
-                          onChange={(e) =>
-                            setDataEdit({ ...data, type: e.target.value })
-                          }
-                          type="radio"
-                          value="dropdown"
-                          name="list-radio"
-                          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
-                        />
-                        <label
-                          className="w-full py-3 ml-2 text-sm font-medium text-gray-900"
-                          htmlFor="dropdown"
-                        >
-                          Dropdown
-                        </label>
-                      </div>
-                    </li>
-                    <li className="w-full border-b border-gray-200 rounded-t-lg">
-                      <div className="flex items-center pl-3">
-                        <input
-                          id="radio"
-                          checked={data?.type == "radio"}
-                          onChange={(e) =>
-                            setDataEdit({ ...data, type: e.target.value })
-                          }
-                          type="radio"
-                          value="radio"
-                          name="list-radio"
-                          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
-                        />
-                        <label
-                          className="w-full py-3 ml-2 text-sm font-medium text-gray-900"
-                          htmlFor="radio"
-                        >
-                          Radio
-                        </label>
-                      </div>
-                    </li>
-                    <li className="w-full border-b border-gray-200 rounded-t-lg">
-                      <div className="flex items-center pl-3">
-                        <input
-                          id="checkbox"
-                          checked={data?.type == "checkbox"}
-                          onChange={(e) =>
-                            setDataEdit({ ...data, type: e.target.value })
-                          }
-                          type="radio"
-                          value="checkbox"
-                          name="list-radio"
-                          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
-                        />
-                        <label
-                          className="w-full py-3 ml-2 text-sm font-medium text-gray-900"
-                          htmlFor="checkbox"
-                        >
-                          Checkbox
-                        </label>
-                      </div>
-                    </li>
-                    <li className="w-full border-b border-gray-200 rounded-t-lg">
-                      <div className="flex items-center pl-3">
-                        <input
-                          id="autoNumber"
-                          checked={data?.type == "autoNumber"}
-                          onChange={(e) =>
-                            setDataEdit({ ...data, type: e.target.value })
-                          }
-                          type="radio"
-                          value="autoNumber"
-                          name="list-radio"
-                          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
-                        />
-                        <label
-                          className="w-full py-3 ml-2 text-sm font-medium text-gray-900"
-                          htmlFor="autoNumber"
-                        >
-                          Auto number
-                        </label>
-                      </div>
-                    </li> */}
                     {options.map((item) => (
                       <li
                         className="w-full border-b border-gray-200 rounded-t-lg"
@@ -312,47 +161,12 @@ export default function NewFieldModal({
                   </ul>
                 </div>
               </div>
-              {/* <select
-                className={`border border-gray-300
-               bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5`}
-                value={data?.type}
-                onChange={(e) => {
-                  setDataEdit({
-                    ...data,
-                    type: e.target.value,
-                  });
-                }}
-              >
-                {options.map((item) => (
-                  <option key={Math.random()} value={item.value}>
-                    {item.label}
-                  </option>
-                ))}
-              </select> */}
+
               {(data?.type == "dropdown" || data?.type == "contactList") && (
                 <div>
                   <label className="block mb-2 text-sm font-medium text-gray-900">
                     {pageTranslate?.values}
                   </label>
-                  {/* <input
-                  type="text"
-                  name="label"
-                  className={`${
-                    error ? "border border-red-500" : "border border-gray-300"
-                  } bg-gray-50  text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5`}
-                  placeholder={pageTranslate.enter_a_field_name}
-                  required
-                  onChange={(e) => {
-                    setDataEdit({
-                      ...data,
-                      id: Math.random() + "",
-                      [e.target.name]: e.target.value,
-                      key: e.target.value,
-                      placeholder: e.target.value,
-                    });
-                  }}
-                  value={data?.label || ""}
-                /> */}
                   <textarea
                     type="text"
                     name="label"

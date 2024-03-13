@@ -2,15 +2,9 @@
 import * as React from "react";
 import CenterPanel from "@/app/formedit2/centerPanel";
 import LeftPanel from "@/app/formedit2/leftPanel";
-import RightPanel from "@/app/formedit2/rightPanel";
-import * as Fi from "react-icons/fi";
-import NewFieldModal from "./newfieldModal";
 import { DragDropContext } from "@hello-pangea/dnd";
-import FormSubmitModal from "./formsubmitModal";
 const { v4: uuidv4 } = require("uuid");
-import Link from "next/link";
 import ConfirmModal from "./confirmModal";
-import TopModal from "../sharedControls/topModal";
 import TopModal2 from "../sharedControls/topModal2";
 
 export default function EditFormModal({
@@ -29,8 +23,6 @@ export default function EditFormModal({
   const [currentField, setCurrentField] = React.useState(null);
   const [isDragging, setIsDragging] = React.useState(false);
   const [isEdit, setIsEdit] = React.useState(false);
-  const [visibleSubmitFormModal, setVisibleSubmitFormModal] =
-    React.useState(false);
   const [visibleConfirmModal, setVisibleConfirmModal] = React.useState(false);
   const [dataEdit, setDataEdit] = React.useState({
     id: "",

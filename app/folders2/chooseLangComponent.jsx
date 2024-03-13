@@ -12,7 +12,6 @@ export default function ChooseLangComponent({
   const [expand, setExpand] = React.useState(false);
   const changeLanguage = (newLang) => {
     document.documentElement.lang = newLang.code;
-    //window.location.href = `/folders`;
     localStorage.setItem("prefered_local", newLang.code);
   };
   const getAlllanguage = () => {

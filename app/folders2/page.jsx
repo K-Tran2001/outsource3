@@ -148,7 +148,7 @@ export default function Folders2() {
   const [visibleModalNewField, setVisibleModalNewField] = React.useState(false);
   const [dataTranslate, setDataTranslate] = React.useState({});
   const [headingForm, setHeadingForm] = React.useState({
-    id: "item-xx",
+    id: "item-22",
     placeholder: "_",
     label: "Form title",
     key: "_",

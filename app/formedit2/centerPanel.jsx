@@ -1,11 +1,8 @@
 import * as React from "react";
-import * as Ai from "react-icons/ai";
 import * as Bs from "react-icons/bs";
 import { Draggable } from "@hello-pangea/dnd";
 import { StrictModeDroppable } from "./components/strictmode";
 import ItemForm from "../folders2/sharedControls/itemForm";
-import EditFormModal from "../folders2/modals/editformModal";
-import NewFieldModal from "../folders2/modals/newfieldModal";
 import NewFieldModal2 from "../folders2/modals/newfieldModal2";
 
 export default function CenterPanel({

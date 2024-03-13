@@ -110,29 +110,10 @@ export default function Form() {
       setDataForm(transformedArray);
     }
 
-    // const transformedArray =
-    //   JSON.parse(localStorage?.getItem("formItem")).fields == null
-    //     ? {}
-    //     : JSON.parse(localStorage.getItem("formItem")).fields.reduce(
-    //         (result, item) => {
-    //           result[item.key] = item.label;
-    //           return result;
-    //         },
-    //         {}
-    //       );
-    // const result = {};
-    // var fields = JSON.parse(localStorage.getItem("formItem"))?.fields;
-    // if (fields.length > 0) {
-    //   fields.forEach((item) => {
-    //     result[item.id] = item.value;
-    //   });
-    // }
-    // setDataForm(result);
     getDataTranslate(requestTranlate);
   }, [targetLang]);
   React.useEffect(() => {
     let value;
-    // Get the value from local storage if it exists
     value = localStorage.getItem("prefered_local") || "vi";
     setTargetLang(value);
   }, []);
@@ -245,12 +226,6 @@ export default function Form() {
                       );
                     } else if (field.isShow === true) {
                       return (
-                        // <div className="mb-4  rounded-lg " key={Math.random()}  >
-                        //   <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                        //     {field.label}
-                        //   </label>
-                        //   <input type={field.type} id="password" className="  border-b border-gray_300 text-black text-sm   block w-full p-2.5" placeholder={field.placeholder}/>
-                        // </div>
                         <div
                           className="relative z-0 w-full mb-6 group"
                           key={Math.random()}
