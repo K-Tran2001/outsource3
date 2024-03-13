@@ -51,7 +51,7 @@ export default function ConfirmModal({
               <div className="flex justify-end space-x-2 mt-4">
                 <button
                   type="button"
-                  className="w-[20%] text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                  className="w-[20%] text-white bg-secondary  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                   onClick={(e) => {
                     setVisible(false);
                   }}
@@ -60,7 +60,7 @@ export default function ConfirmModal({
                 </button>
                 <button
                   type="button"
-                  className="w-[20%] text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                  className="w-[20%] text-white bg-primary  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                   onClick={() => {
                     callback();
                     setVisible(false);
