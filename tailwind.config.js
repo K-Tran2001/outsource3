@@ -7,24 +7,34 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: "#14532d",
+        secondary:"#fb923c",
+        gray_800:"#111827",
+        gray_400:"#9ca3af",
+        gray_500:"#71717a",
+        gray_200:"#e4e4e7",
+        gray_100:"#f3f4f6",
+        focus:"#3b82f6",
+        danger:"#ef4444"
+      },
+      fontSize: {
+        small: 10,
+        medium:14,
+        large:18,
+        discriptionForm:20,
+        titleForm:25,
+      }, 
+      fontFamily: {
+        'sans': ['ui-sans-serif', 'system-ui'],
+        'body': ['"Open Sans"'],
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
-      // colors: {
-      //   primary: "#005bc5",
-      //   secondary:"#742365",
-      //   black:"#222831",
-      //   gray:"#31363F"
-      // },
-      // fontSize: {
-      //   small: 10,
-      //   medium:14,
-      //   large:18,
-      //   discriptionForm:20,
-      //   titleForm:25,
-      // },
+      
     },
   },
   plugins: [],

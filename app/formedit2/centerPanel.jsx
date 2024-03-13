@@ -79,10 +79,10 @@ export default function CenterPanel({
           }}
         >
           <div className="hover:shadow-lg rounded-lg px-8">
-            <h1 className="text-2xl font-bold text-gray-800 text-center">
+            <h1 className="text-titleForm font-medium text-gray_800 text-center truncate">
               {headingForm?.title}
             </h1>
-            <h3 className="text-lg font-bold text-gray-800 py-8 truncate">
+            <h3 className="text-discriptionForm font-medium text-gray_800 py-8 truncate">
               {headingForm?.discription}
             </h3>
           </div>

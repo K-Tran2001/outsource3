@@ -1,5 +1,4 @@
 import React from "react";
-import * as Fi from "react-icons/fi";
 import Button_Sm_NoBg from "./button_Sm_NoBg";
 import TitleText from "./titleText";
 import * as Ri from "react-icons/ri";
@@ -39,25 +38,27 @@ const TopModal2 = ({
           className="w-8 h-8 mr-2"
           alt="Vietnam free icon"
         /> */}
-        <h1 className="text-md font-medium">{pageTranslate.contact_us}</h1>
-        <Ri.RiArrowDropDownLine className="w-5 h-5 " />
+        <h1 className="text-large font-medium text-gray_800">
+          {pageTranslate.contact_us}
+        </h1>
+        <Ri.RiArrowDropDownLine className="w-5 h-5 text-gray_800" />
       </div>
       <TitleText title={"PHOENIX FORM"} />
       <div className="flex items-center space-x-2">
         <Button_Sm_NoBg
           bg={"bg-white"}
-          color={"text-blue-500"}
+          color={"text-primary"}
           size={"text-sm"}
           padding={"px-3 py-2"}
           rounded={"rounded-full"}
-          border={"border border-blue-500"}
+          border={"border border-primary"}
           pageTranslate={pageTranslate}
           onClick={openForm}
           text={pageTranslate.open_form}
         />
 
         <Button_Sm_NoBg
-          bg={"bg-blue-500"}
+          bg={"bg-primary"}
           color={"text-white"}
           size={"text-md"}
           padding={"px-3 py-2"}

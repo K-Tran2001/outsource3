@@ -31,7 +31,7 @@ export default function ItemForm({
                 className=" w-6 h-6 bg-red-100 flex justify-center items-center rounded-lg"
                 onClick={handleDelete}
               >
-                <Ai.AiOutlineDelete className="w-4 h-4 text-red-500" />
+                <Ai.AiOutlineDelete className="w-4 h-4 text-danger" />
               </button>
             </div>
           </div>
@@ -42,7 +42,7 @@ export default function ItemForm({
             <h1 className="flex flex-col items-center justify-center w-full h-64 cursor-pointer   ">
               <div className="flex flex-col items-center justify-center pt-5 pb-6">
                 <svg
-                  className="w-10 h-10 mb-4 text-gray-500"
+                  className="w-10 h-10 mb-4 text-gray_500"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -56,13 +56,13 @@ export default function ItemForm({
                     d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                   />
                 </svg>
-                <p className="mb-2 text-md text-gray-500 ">
+                <p className="mb-2 text-large text-gray_500 ">
                   <span className="font-semibold">
                     {pageTranslate.click_to_upload}
                   </span>{" "}
                   {pageTranslate.or_drag_and_drop}
                 </p>
-                <p className="text-xs text-gray-500 ">
+                <p className="text-xs text-gray_500 ">
                   SVG, PNG, JPG or GIF (MAX. 800x400px)
                 </p>
               </div>
@@ -88,7 +88,7 @@ export default function ItemForm({
                 className=" w-6 h-6 bg-red-100 flex justify-center items-center rounded-lg"
                 onClick={handleDelete}
               >
-                <Ai.AiOutlineDelete className="w-4 h-4 text-red-500" />
+                <Ai.AiOutlineDelete className="w-4 h-4 text-danger" />
               </button>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function ItemForm({
                 className=" w-6 h-6 bg-red-100 flex justify-center items-center rounded-lg"
                 onClick={handleDelete}
               >
-                <Ai.AiOutlineDelete className="w-4 h-4 text-red-500" />
+                <Ai.AiOutlineDelete className="w-4 h-4 text-danger" />
               </button>
             </div>
           </div>
@@ -154,7 +154,7 @@ export default function ItemForm({
                 className=" w-6 h-6 bg-red-100 flex justify-center items-center rounded-lg"
                 onClick={handleDelete}
               >
-                <Ai.AiOutlineDelete className="w-4 h-4 text-red-500" />
+                <Ai.AiOutlineDelete className="w-4 h-4 text-danger" />
               </button>
             </div>
           </div>
@@ -173,9 +173,9 @@ export default function ItemForm({
                 type={field.type}
                 value={field.type}
                 name="list-radio"
-                className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
               />
-              <h1 className="w-full py-3 ml-2 text-md  text-gray-900">
+              <h1 className="w-full py-3 ml-2 text-medium  text-gray-900">
                 {field.label}
               </h1>
             </div>
@@ -199,20 +199,20 @@ export default function ItemForm({
                 className=" w-6 h-6 bg-red-100 flex justify-center items-center rounded-lg"
                 onClick={handleDelete}
               >
-                <Ai.AiOutlineDelete className="w-4 h-4 text-red-500" />
+                <Ai.AiOutlineDelete className="w-4 h-4 text-danger" />
               </button>
             </div>
           </div>
           <div className="z-0 w-full mb-2 group">
-            <div className="mb-2 flex text-lg text-md text-gray-500  duration-300 transform translate-y-1 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
+            <div className="mb-2 flex text-large text-large text-gray_800  duration-300 transform translate-y-1 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
               {field.type == "date" ? "" : field.label}
               {field.required == true && (
                 <>
-                  <div className=" text-red-500 font-inliac">(</div>
-                  <div className=" text-red-500 font-inliac">
+                  <div className=" text-danger">(</div>
+                  <div className=" text-danger">
                     {field.required == true ? "*" : ""}
                   </div>
-                  <div className=" text-red-500 font-inliac">)</div>
+                  <div className=" text-danger">)</div>
                 </>
               )}
             </div>
@@ -220,7 +220,7 @@ export default function ItemForm({
               id={field.id}
               disabled
               className={`border border-gray-300 rounded-lg
-               bg-gray-50  text-gray-900 text-md   block w-full p-1`}
+               bg-gray-50  text-gray-900 text-large   block w-full p-1`}
             ></select>
           </div>
         </div>
@@ -242,20 +242,20 @@ export default function ItemForm({
                 className=" w-6 h-6 bg-red-100 flex justify-center items-center rounded-lg"
                 onClick={handleDelete}
               >
-                <Ai.AiOutlineDelete className="w-4 h-4 text-red-500" />
+                <Ai.AiOutlineDelete className="w-4 h-4 text-danger" />
               </button>
             </div>
           </div>
           <div className="z-0 w-full mb-2 group">
-            <div className="flex text-lg text-md text-gray-500  duration-300 transform translate-y-1 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
+            <div className="flex text-large text-large text-gray_800  duration-300 transform translate-y-1 scale-75 top-3 -z-10 origin-[0] left-0 text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 scale-75 -translate-y-6">
               {field.label}
               {field.required == true && (
                 <div className="flex px-2">
-                  <div className=" text-red-500 font-inliac">(</div>
-                  <div className=" text-red-500 font-inliac">
+                  <div className=" text-danger">(</div>
+                  <div className=" text-danger">
                     {field.required == true ? "*" : ""}
                   </div>
-                  <div className=" text-red-500 font-inliac">)</div>
+                  <div className=" text-danger">)</div>
                 </div>
               )}
             </div>

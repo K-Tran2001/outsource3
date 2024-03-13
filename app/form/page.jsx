@@ -87,7 +87,6 @@ export default function Form() {
     return ids.length == 0;
   };
   const onSubmit = () => {
-    console.log(dataForm);
     if (onValidate()) {
       alert(dataTranslate.result_saved);
     }
@@ -102,7 +101,6 @@ export default function Form() {
       const transformedArray = JSON.parse(
         localStorage.getItem("formItem")
       ).fields.reduce((result, item) => {
-        console.log(item);
         var condition =
           (item.type === "dropdown" || item.type === "contactList") &&
           item?.values?.length > 0;
@@ -159,10 +157,10 @@ export default function Form() {
                     if (field.type == "heading") {
                       return (
                         <div className="mb-4  rounded-lg " key={Math.random()}>
-                          <h1 className="text-center text-black text-4xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                          <h1 className="text-center text-black text-4xl rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5">
                             {field.title}
                           </h1>
-                          <h1 className=" text-black text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                          <h1 className=" text-black text-xl rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5">
                             {field.discription}
                           </h1>
                         </div>
@@ -194,10 +192,10 @@ export default function Form() {
                               }}
                               type={field.type}
                               name="list-radio"
-                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
+                              className="w-4 h-4 text-primary bg-gray_100 border-gray_300"
                             />
                             <label
-                              className="w-full py-3 ml-2 text-md text-gray-500"
+                              className="w-full py-3 ml-2 text-md text-gray_500"
                               htmlFor={field.id}
                             >
                               {`${field.label}`}
@@ -211,16 +209,16 @@ export default function Form() {
                     ) {
                       return (
                         <div className=" w-full my-6 group" key={Math.random()}>
-                          <div className="w-full py-3  text-sm text-gray-500 flex">
+                          <div className="w-full py-3  text-sm text-gray_500 flex">
                             {`${field.label} `}
-                            <div className="text-red-500 px-2">{`${
+                            <div className="text-danger px-2">{`${
                               field?.required == true ? "(*)" : ""
                             }`}</div>
                           </div>
                           <select
                             id={field.id}
-                            className={`border border-gray-300
-               bg-gray-50  text-gray-900 text-lg rounded-lg  block w-full p-2.5`}
+                            className={`border border-gray_300
+               bg-gray-50  text-gray_800 text-large rounded-lg  block w-full p-2.5`}
                             value={dataForm[field?.id]?.value}
                             multiple={false}
                             onChange={(e) => {
@@ -251,7 +249,7 @@ export default function Form() {
                         //   <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                         //     {field.label}
                         //   </label>
-                        //   <input type={field.type} id="password" className="  border-b border-gray-300 text-black text-sm   block w-full p-2.5" placeholder={field.placeholder}/>
+                        //   <input type={field.type} id="password" className="  border-b border-gray_300 text-black text-sm   block w-full p-2.5" placeholder={field.placeholder}/>
                         // </div>
                         <div
                           className="relative z-0 w-full mb-6 group"
@@ -262,10 +260,10 @@ export default function Form() {
                               field.type === "autoNumber" ? "text" : field.type
                             }
                             name="floating_email"
-                            className={`px-2 block py-3 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 ${
+                            className={`px-2 block py-3 w-full text-large text-gray_800 bg-transparent border-0 border-b-2 border-gray_300 appearance-none focus:outline-none focus:ring-0 ${
                               error.includes(field.id)
-                                ? "border-red-500"
-                                : "focus:border-blue-600"
+                                ? "border-danger"
+                                : "focus:border-primary"
                             } peer`}
                             placeholder=" "
                             readOnly={field.type === "autoNumber"}
@@ -284,9 +282,9 @@ export default function Form() {
                               });
                             }}
                           />
-                          <div className="flex peer-focus:text-lg absolute text-lg text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                          <div className="flex peer-focus:text-large absolute text-large text-gray_500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                             {`${field.label} `}
-                            <div className="text-red-500 px-2">{`${
+                            <div className="text-danger px-2">{`${
                               field.required == true ? "(*)" : ""
                             }`}</div>
                           </div>
@@ -315,11 +313,11 @@ export default function Form() {
                                 <div key={Math.random()} className="w-full">
                                   <label
                                     htmlFor={field.id}
-                                    className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50"
+                                    className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray_300 border-dashed rounded-lg cursor-pointer bg-gray-50"
                                   >
                                     <div className="flex flex-col items-center justify-center pt-5 pb-6">
                                       <svg
-                                        className="w-8 h-8 mb-4 text-gray-500"
+                                        className="w-8 h-8 mb-4 text-gray_500"
                                         aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
@@ -333,13 +331,13 @@ export default function Form() {
                                           d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                                         />
                                       </svg>
-                                      <p className="mb-2 text-sm text-gray-500">
+                                      <p className="mb-2 text-sm text-gray_500">
                                         <span className="font-semibold">
                                           {dataTranslate.click_to_upload}
                                         </span>
                                         {dataTranslate.or_drag_and_drop}{" "}
                                       </p>
-                                      <p className="text-xs text-gray-500">
+                                      <p className="text-xs text-gray_500">
                                         SVG, PNG, JPG or GIF (MAX. 800x400px)
                                       </p>
                                     </div>
@@ -356,7 +354,7 @@ export default function Form() {
                             {identityImage.length > 0 && (
                               <div className="flex justify-center">
                                 <button
-                                  className="w-1/2 bg-slate-400 text-white font-normal text-lg py-2 px-0.5 rounded-xl flex justify-center mt-3"
+                                  className="w-1/2 bg-primary text-white font-normal text-large py-2 px-0.5 rounded-xl flex justify-center mt-3"
                                   onClick={() => {
                                     setOpen(!open);
                                     setIdentityImage("");
@@ -402,7 +400,7 @@ export default function Form() {
                                   {identityImage.length > 0 && (
                                     <div className="flex justify-center">
                                       <button
-                                        className="w-1/2 bg-slate-400 text-white font-normal text-lg py-2 px-0.5 rounded-xl flex justify-center mt-3"
+                                        className="w-1/2 bg-primary text-white font-normal text-large py-2 px-0.5 rounded-xl flex justify-center mt-3"
                                         onClick={() => {
                                           setOpen(!open);
                                           setIdentityImage("");
@@ -424,7 +422,7 @@ export default function Form() {
                                   className="flex items-center justify-center w-full"
                                   onClick={() => setOpen(!open)}
                                 >
-                                  <div className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 ">
+                                  <div className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray_300 border-dashed rounded-lg cursor-pointer bg-gray-50 ">
                                     <div className="flex flex-col items-center justify-center pt-5 pb-6">
                                       <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -438,7 +436,7 @@ export default function Form() {
                                         <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />{" "}
                                         <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />{" "}
                                       </svg>
-                                      <p className="mb-2 text-sm text-gray-500">
+                                      <p className="mb-2 text-sm text-gray_500">
                                         <span className="font-semibold">
                                           {dataTranslate.click_to_take_a_photo}
                                         </span>
@@ -457,7 +455,7 @@ export default function Form() {
                               key={Math.random()}
                             >
                               <button
-                                className="px-4 py-2 bg-indigo-400 text-white rounded-lg"
+                                className="px-4 py-2 bg-primary text-white rounded-lg"
                                 onClick={() => setIsTakePhoto(!istakePhoto)}
                               >
                                 {istakePhoto
@@ -484,7 +482,7 @@ export default function Form() {
                 /> */}
                 {fields?.length > 0 ? (
                   <button
-                    className="px-4 py-2 bg-indigo-400 text-white rounded-lg"
+                    className="px-4 py-2 bg-primary text-white rounded-lg"
                     onClick={() => {
                       //alert(dataTranslate.result_saved);
                       onSubmit();

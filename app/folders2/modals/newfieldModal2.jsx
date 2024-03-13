@@ -1,4 +1,5 @@
 import * as React from "react";
+import TitleText from "../sharedControls/titleText";
 
 export default function NewFieldModal2({
   pageTranslate,
@@ -52,6 +53,7 @@ export default function NewFieldModal2({
     "checkbox",
     "radio",
     "heading",
+    "headingForm",
     "divider",
     "file",
     "autoNumber",
@@ -84,10 +86,10 @@ export default function NewFieldModal2({
       } w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full  flex justify-center items-center`}
     >
       <div className="w-full max-w-4xl max-h-full">
-        <div className="relative bg-indigo-400 rounded-t-lg shadow ">
+        <div className="relative bg-primary  rounded-t-lg shadow ">
           <button
             type="button"
-            className="absolute top-3 right-2.5 text-gray-800 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
+            className="absolute top-3 right-2.5 text-white bg-transparent hover:bg-gray-200 hover:text-gray_800 rounded-lg text-medium w-8 h-8 ml-auto inline-flex justify-center items-center"
             data-modal-hide="authentication-modal"
             onClick={() => {
               setVisibleModalNewField(false);
@@ -113,9 +115,15 @@ export default function NewFieldModal2({
             <span className="sr-only">Close modal</span>
           </button>
           <div className="p-4 lg:px-8">
-            <h3 className=" text-xl font-medium text-white ">
+            {/* <h3 className=" text-xl font-medium text-white ">
               {!isEdit ? pageTranslate?.new_field : pageTranslate?.edit_field}
-            </h3>
+            </h3> */}
+            <TitleText
+              title={
+                !isEdit ? pageTranslate?.new_field : pageTranslate?.edit_field
+              }
+              color={"text-white"}
+            />
           </div>
         </div>
         <div className="bg-white rounded-b-lg">
@@ -124,15 +132,15 @@ export default function NewFieldModal2({
             <div className="w-[50%]  p-4">
               <div className="space-y-6">
                 <div>
-                  <h1 className="block mb-2 text-md font-medium text-gray-900">
+                  <h1 className="block mb-2 text-medium font-medium text-gray_800">
                     {pageTranslate?.field_name}
                   </h1>
                   <input
                     type="text"
                     name="label"
                     className={`${
-                      error ? "border border-red-500" : "border border-gray-300"
-                    } bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 bg-transparent`}
+                      error ? "border border-danger" : "border border-gray-300"
+                    } bg-gray-50  text-gray_800 text-medium rounded-lg  block w-full p-2.5 bg-transparent`}
                     placeholder={pageTranslate.enter_a_field_name}
                     required
                     onChange={(e) => {
@@ -149,15 +157,15 @@ export default function NewFieldModal2({
                 </div>
                 {data?.type != "headingForm" && (
                   <div>
-                    <div className="block mb-2 text-md font-medium text-gray-900 flex">
+                    <div className="block mb-2 text-medium font-medium text-gray_800 flex">
                       {`${pageTranslate?.field_type} `}
-                      <div className="text-red-500 px-2">
+                      <div className="text-danger px-2">
                         {isEdit == true ? data.type : ""}
                       </div>
                     </div>
                     {!isEdit && (
-                      <div className="h-[400px] overflow-y-scroll overflow-hidden has-scrollbar">
-                        <ul className="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg ">
+                      <div className="h-[300px] overflow-y-scroll overflow-hidden has-scrollbar">
+                        <ul className="w-full text-medium font-medium text-gray_800 bg-white border border-gray-200 rounded-lg ">
                           {options.map((item) => (
                             <li
                               className="w-full border-b border-gray-200 rounded-t-lg"
@@ -184,7 +192,7 @@ export default function NewFieldModal2({
                                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
                                 />
                                 <label
-                                  className="w-full py-3 ml-2 text-sm font-medium text-gray-900"
+                                  className="w-full py-3 ml-2 text-medium font-medium text-gray_800"
                                   htmlFor={item.value}
                                 >
                                   {item.label}
@@ -205,7 +213,7 @@ export default function NewFieldModal2({
                 <div>
                   <div className="mb-4">
                     <label
-                      className="block mb-2 text-md font-medium text-gray-900"
+                      className="block mb-2 text-medium font-medium text-gray_800"
                       htmlFor="title"
                     >
                       {pageTranslate?.title}
@@ -214,7 +222,7 @@ export default function NewFieldModal2({
                       id="title"
                       type="text"
                       name="label"
-                      className={`border border-gray-300 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 bg-transparent`}
+                      className={`border border-gray-300 bg-gray-50  text-gray_800 text-medium rounded-lg  block w-full p-2.5 bg-transparent`}
                       placeholder={pageTranslate?.title}
                       required
                       onBlur={(e) => {
@@ -228,7 +236,7 @@ export default function NewFieldModal2({
                   </div>
                   <div className="mb-4">
                     <label
-                      className="block mb-2 text-md font-medium text-gray-900"
+                      className="block mb-2 text-medium font-medium text-gray_800"
                       htmlFor="discription"
                     >
                       {pageTranslate?.discription}
@@ -237,7 +245,7 @@ export default function NewFieldModal2({
                       id="discription"
                       type="text"
                       name="label"
-                      className={`border border-gray-300 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 bg-transparent`}
+                      className={`border border-gray-300 bg-gray-50  text-gray_800 text-medium rounded-lg  block w-full p-2.5 bg-transparent`}
                       placeholder={pageTranslate?.discription}
                       required
                       onBlur={(e) => {
@@ -253,15 +261,15 @@ export default function NewFieldModal2({
               )}
               {(data?.type == "dropdown" || data?.type == "contactList") && (
                 <div>
-                  <div className="block mb-2 text-md font-medium text-gray-900 flex">
+                  <div className="block mb-2 text-medium font-medium text-gray_800 flex">
                     {`${pageTranslate?.values}`}
-                    <div className="text-red-500 px-2">(,)</div>
+                    <div className="text-danger px-2">(,)</div>
                   </div>
                   <textarea
                     id="values_contact"
                     type="text"
                     name="label"
-                    className={`border border-gray-300 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 bg-transparent`}
+                    className={`border border-gray-300 bg-gray-50  text-gray_800 text-medium rounded-lg  block w-full p-2.5 bg-transparent`}
                     placeholder={pageTranslate?.values}
                     required
                     onBlur={(e) => {
@@ -282,7 +290,7 @@ export default function NewFieldModal2({
                   <div className="flex space-x-4 justify-between">
                     <div className="item">
                       <label
-                        className="block mb-2 text-md font-medium text-gray-900"
+                        className="block mb-2 text-medium font-medium text-gray_800"
                         htmlFor="prefix"
                       >
                         {pageTranslate?.prefix}
@@ -291,7 +299,7 @@ export default function NewFieldModal2({
                         id="prefix"
                         type="text"
                         name="label"
-                        className={`border border-gray-300 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 bg-transparent text-right`}
+                        className={`border border-gray-300 bg-gray-50  text-gray_800 text-medium rounded-lg  block w-full p-2.5 bg-transparent text-right`}
                         placeholder=""
                         required
                         onChange={(e) => {
@@ -308,7 +316,7 @@ export default function NewFieldModal2({
                     </div>
                     <div className="item">
                       <label
-                        className="block mb-2 text-md font-medium text-gray-900"
+                        className="block mb-2 text-medium font-medium text-gray_800"
                         htmlFor="sufix"
                       >
                         {pageTranslate?.suffix}
@@ -317,7 +325,7 @@ export default function NewFieldModal2({
                         id="sufix"
                         type="text"
                         name="label"
-                        className={`border border-gray-300 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 bg-transparent text-right`}
+                        className={`border border-gray-300 bg-gray-50  text-gray_800 text-medium rounded-lg  block w-full p-2.5 bg-transparent text-right`}
                         placeholder=""
                         required
                         onChange={(e) => {
@@ -335,13 +343,13 @@ export default function NewFieldModal2({
                   </div>
                   <div className="flex space-x-4 pt-4 justify-between">
                     <div className="item">
-                      <h1 className="block mb-2 text-md font-medium text-gray-900">
+                      <h1 className="block mb-2 text-medium font-medium text-gray_800">
                         {pageTranslate?.length}
                       </h1>
                       <select
                         id={"select_length"}
                         className={`border border-gray-300
-               bg-gray-50  text-gray-900 text-sm rounded-lg  block  p-2.5`}
+               bg-gray-50  text-gray_800 text-medium rounded-lg  block  p-2.5`}
                         onChange={(e) => {
                           setDataEdit({
                             ...data,
@@ -361,13 +369,13 @@ export default function NewFieldModal2({
                       </select>
                     </div>
                     <div className="item">
-                      <h1 className="block mb-2 text-md font-medium text-gray-900">
+                      <h1 className="block mb-2 text-medium font-medium text-gray_800">
                         {pageTranslate?.defaultValue}
                       </h1>
                       <input
                         type="text"
                         name="label"
-                        className={`border border-gray-300 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 bg-transparent text-right`}
+                        className={`border border-gray-300 bg-gray-50  text-gray_800 text-medium rounded-lg  block w-full p-2.5 bg-transparent text-right`}
                         placeholder=""
                         required
                         onChange={(e) => {
@@ -404,7 +412,7 @@ export default function NewFieldModal2({
                   />
                   <div className="w-11 h-6 bg-gray-200 rounded-full peer   peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-300"></div>
                   <span
-                    className={`ml-3 text-md font-medium ${
+                    className={`ml-3 text-medium font-medium ${
                       disableRequiredFieldList.includes(data?.type)
                         ? "text-gray-300"
                         : ""
@@ -417,10 +425,10 @@ export default function NewFieldModal2({
               {/*  */}
             </div>
           </div>
-          <div className="flex justify-end space-x-4 p-4">
+          <div className="flex justify-end space-x-2 p-4">
             <button
               type="button"
-              className="w-[100px] text-white bg-yellow-500 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+              className="w-[100px] text-white bg-secondary hover:shadow-sm focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-medium px-5 py-2.5 text-center"
               onClick={(e) => {
                 setVisibleModalNewField(false);
                 setDataEdit({ label: "", type: "text" });
@@ -431,7 +439,7 @@ export default function NewFieldModal2({
             </button>
             <button
               type="button"
-              className="w-[100px] text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+              className="w-[100px] text-white bg-primary hover:shadow-sm focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-medium px-5 py-2.5 text-center"
               onClick={(e) => {
                 e.preventDefault();
                 var copyData = {

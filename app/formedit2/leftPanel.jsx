@@ -58,12 +58,12 @@ export default function LeftPanel({
     setFields({ ...tempFields });
   };
   return (
-    <div className="w-2/12 h-[calc(100vh-50px)] relative bg-gray-100">
+    <div className="w-2/12 h-[calc(100vh-50px)] relative bg-gray_100">
       <div className={`p-0`}>
         <TitleText
           title={pageTranslate?.fields}
           padding={"px-4 py-2"}
-          bg={"bg-gray-200"}
+          bg={"bg-gray_200"}
         />
         <div
           className={`${
@@ -137,7 +137,7 @@ export default function LeftPanel({
             {pageTranslate?.new_field}
           </button>
         </div> */}
-        <div className="absolute bottom-0 w-full p-0 bg-gray-100">
+        <div className="absolute bottom-0 w-full p-0 bg-gray_100">
           {/* <div className="flex justify-between items-center mb-4">
             <div className="text-lg font-bold ">
               {pageTranslate?.form_elements}
@@ -146,7 +146,7 @@ export default function LeftPanel({
           <TitleText
             title={pageTranslate?.form_elements}
             padding={"px-4 py-2"}
-            bg={"bg-gray-200"}
+            bg={"bg-gray_200"}
           />
           <div className="p-2">
             <StrictModeDroppable droppableId={"formElements"}>

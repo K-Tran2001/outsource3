@@ -85,7 +85,7 @@ export default function FieldItem({
               </div>
             )}
           </div>
-          <div className="px-4 text-sm font-md">{field.label}</div>
+          <div className="px-4 text-medium">{field.label}</div>
         </div>
         <button
           className={`icon ${isHovered ? "visible" : ""}`}
