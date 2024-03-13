@@ -178,6 +178,7 @@ export default function NewFieldModal2({
                                       ...DEFAULT_DATA,
                                       type: e.target.value,
                                       typeName: item.label,
+                                      label: "",
                                       values: [],
                                       required: false,
                                       config: {},
@@ -222,13 +223,13 @@ export default function NewFieldModal2({
                       className={`border border-gray-300 bg-gray-50  text-gray_800 text-medium rounded-lg  block w-full p-2.5 bg-transparent`}
                       placeholder={pageTranslate?.title}
                       required
-                      onBlur={(e) => {
+                      onChange={(e) => {
                         setDataEdit({
                           ...data,
                           title: e.target.value,
                         });
                       }}
-                      defaultValue={data?.title || ""}
+                      value={data?.title || ""}
                     />
                   </div>
                   <div className="mb-4">
@@ -245,13 +246,13 @@ export default function NewFieldModal2({
                       className={`border border-gray-300 bg-gray-50  text-gray_800 text-medium rounded-lg  block w-full p-2.5 bg-transparent`}
                       placeholder={pageTranslate?.discription}
                       required
-                      onBlur={(e) => {
+                      onChange={(e) => {
                         setDataEdit({
                           ...data,
                           discription: e.target.value,
                         });
                       }}
-                      defaultValue={data?.discription || ""}
+                      value={data?.discription || ""}
                     />
                   </div>
                 </div>
@@ -269,14 +270,14 @@ export default function NewFieldModal2({
                     className={`border border-gray-300 bg-gray-50  text-gray_800 text-medium rounded-lg  block w-full p-2.5 bg-transparent`}
                     placeholder={pageTranslate?.values}
                     required
-                    onBlur={(e) => {
+                    onChange={(e) => {
                       var options = e.target.value?.split(",");
                       setDataEdit({
                         ...data,
                         values: options,
                       });
                     }}
-                    defaultValue={
+                    value={
                       data?.values?.length > 0 ? data?.values?.join(",") : ""
                     }
                   />
@@ -461,10 +462,15 @@ export default function NewFieldModal2({
                   if (data.type === "headingForm") {
                     setHeadingForm(data);
                     setVisibleModalNewField(false);
-                    setDataEdit({ label: "", title: "", discription: "" });
-                    setCurrentField(
-                      !hideFieldList.includes(copyData.type) ? copyData : {}
-                    );
+                    setDataEdit({
+                      label: "",
+                      title: "",
+                      discription: "",
+                      required: false,
+                    });
+                    // setCurrentField(
+                    //   !hideFieldList.includes(copyData.type) ? copyData : {}
+                    // );
                     setError(false);
                     return;
                   }

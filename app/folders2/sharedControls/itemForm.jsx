@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as Ci from "react-icons/ci";
 import * as Ai from "react-icons/ai";
+import NewFieldModal2 from "../modals/newfieldModal2";
 
 export default function ItemForm({
   field,

@@ -71,6 +71,7 @@ export default function CenterPanel({
           className="mt-8 px-32"
           onClick={() => {
             setCurrentField(headingForm);
+            //setDataEdit(headingForm);
             setVisibleModalNewField(true);
             setIsEdit(true);
           }}
@@ -109,10 +110,14 @@ export default function CenterPanel({
                               handleDelete={() => removeField(field?.id, index)}
                               handleEdit={() => {
                                 setCurrentField(field);
+                                //setDataEdit(field);
                                 setIsEdit(true);
                                 setVisibleModalNewField(true);
                               }}
                               pageTranslate={pageTranslate}
+                              fields={fields}
+                              currentField={currentField}
+                              setFields={setFields}
                             />
                           </div>
                         )}
