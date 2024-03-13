@@ -485,7 +485,7 @@ export default function NewFieldModal2({
                 }
               }}
             >
-              {isEdit ? pageTranslate.edit : pageTranslate.add}
+              {pageTranslate.save}
             </button>
           </div>
         </div>

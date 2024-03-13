@@ -232,6 +232,7 @@ export default function Folders2() {
       no: "No",
       cancel: "Cancel",
       contact_us: "Contact Us",
+      save: "Save",
     };
     const formDatab = new FormData();
 
