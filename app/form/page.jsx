@@ -87,6 +87,7 @@ export default function Form() {
     return ids.length == 0;
   };
   const onSubmit = () => {
+    console.log(dataForm);
     if (onValidate()) {
       alert(dataTranslate.result_saved);
     }
@@ -101,7 +102,11 @@ export default function Form() {
       const transformedArray = JSON.parse(
         localStorage.getItem("formItem")
       ).fields.reduce((result, item) => {
-        result[item.id] = { ...item, value: "" };
+        console.log(item);
+        var condition =
+          (item.type === "dropdown" || item.type === "contactList") &&
+          item?.values?.length > 0;
+        result[item.id] = { ...item, value: condition ? item?.values[0] : "" };
         return result;
       }, {});
       setDataForm(transformedArray);
@@ -217,10 +222,14 @@ export default function Form() {
                             className={`border border-gray-300
                bg-gray-50  text-gray-900 text-lg rounded-lg  block w-full p-2.5`}
                             value={dataForm[field?.id]?.value}
+                            multiple={false}
                             onChange={(e) => {
                               setDataForm({
                                 ...dataForm,
-                                [field?.id]: { value: e.target.value },
+                                [field?.id]: {
+                                  ...field,
+                                  value: e.target.value,
+                                },
                               });
                             }}
                           >
