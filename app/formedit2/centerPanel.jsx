@@ -76,11 +76,11 @@ export default function CenterPanel({
             setIsEdit(true);
           }}
         >
-          <div className="hover:shadow-lg rounded-lg px-8">
+          <div className="hover:shadow-lg rounded-lg px-8 py-2">
             <h1 className="text-titleForm font-medium text-gray_800 text-center truncate">
               {headingForm?.title}
             </h1>
-            <h3 className="text-discriptionForm font-medium text-gray_800 py-8 truncate">
+            <h3 className="text-discriptionForm font-medium text-gray_800 truncate">
               {headingForm?.discription}
             </h3>
           </div>
@@ -88,7 +88,7 @@ export default function CenterPanel({
         <StrictModeDroppable droppableId={type}>
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef}>
-              <div className=" rounded-lg px-32 py-8  min-h-[60vh]">
+              <div className=" rounded-lg px-32 py-4  min-h-[60vh]">
                 {fields[type]?.map((field, index) => {
                   if (field.isShow)
                     return (

@@ -75,8 +75,8 @@ export default function LeftPanel({
               {(provided) => (
                 <div {...provided.droppableProps} ref={provided.innerRef}>
                   <div
-                    //className={`overflow-x-auto  min-h-[calc(10vh)] h-[350px] has-scrollbar`}
-                    className={`overflow-x-auto  min-h-[calc(10vh)]`}
+                    className={`overflow-x-auto  min-h-[calc(10vh)] h-[345px] has-scrollbar`}
+                    //className={`overflow-x-auto  min-h-[calc(10vh)]`}
                   >
                     {fields["fields"].length > 0
                       ? fields["fields"].map((field, index) => {
