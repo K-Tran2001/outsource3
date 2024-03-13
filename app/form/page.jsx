@@ -97,7 +97,7 @@ export default function Form() {
     setHeadingForm(
       JSON.parse(localStorage.getItem("formItem"))?.headingForm || {}
     );
-    if (data.length > 0) {
+    if (data?.length > 0) {
       const transformedArray = JSON.parse(
         localStorage.getItem("formItem")
       ).fields.reduce((result, item) => {
