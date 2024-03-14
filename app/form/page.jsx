@@ -447,14 +447,6 @@ export default function Form() {
                     );
                   }
                 })}
-                {/* <img
-                  src={identityImage}
-                  alt="Uploaded"
-                  style={{
-                    maxWidth: "100%",
-                    maxHeight: "400px",
-                  }}
-                /> */}
                 {fields?.length > 0 ? (
                   <button
                     className="px-4 py-2 bg-primary text-white rounded-lg"

@@ -426,7 +426,7 @@ export default function NewFieldModal2({
           <div className="flex justify-end space-x-2 p-4">
             <button
               type="button"
-              className="w-[100px] text-white bg-secondary hover:shadow-sm focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-medium px-5 py-2.5 text-center"
+              className="w-[100px] text-white bg-secondary hover:shadow-sm focus:ring-4 focus:outline-none font-medium rounded-lg text-medium px-5 py-2.5 text-center"
               onClick={(e) => {
                 setVisibleModalNewField(false);
                 setDataEdit({ label: "", type: "text" });
@@ -437,7 +437,7 @@ export default function NewFieldModal2({
             </button>
             <button
               type="button"
-              className="w-[100px] text-white bg-primary hover:shadow-sm focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-medium px-5 py-2.5 text-center"
+              className="w-[100px] text-white bg-primary hover:shadow-sm focus:ring-4 focus:outline-none font-medium rounded-lg text-medium px-5 py-2.5 text-center"
               onClick={(e) => {
                 e.preventDefault();
                 var copyData = {
