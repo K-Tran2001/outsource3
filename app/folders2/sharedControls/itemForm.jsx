@@ -141,7 +141,7 @@ export default function ItemForm({
           key={Math.random()}
           onClick={() => setCurrentField({ ...field, index: index })}
         >
-          <div className="relative flex-1 translate-y-[-0rem] translate-x-[0.5rem]">
+          {/* <div className="relative flex-1 translate-y-[-0rem] translate-x-[0.5rem]">
             <div
               className={`absolute flex justify-end space-x-2 right-0 -translate-y-3 translate-x-5 block `}
             >
@@ -158,9 +158,24 @@ export default function ItemForm({
                 <Ai.AiOutlineDelete className="w-4 h-4 text-danger" />
               </button>
             </div>
+          </div> */}
+          <div className="relative flex-1 translate-y-[-0rem] translate-x-[0.5rem] z-10">
+            <div className="absolute flex justify-end space-x-2 right-0 -translate-y-3 translate-x-5">
+              <button
+                className=" w-6 h-6 bg-indigo-100 flex justify-center items-center rounded-lg cursor-pointer"
+                onClick={handleEdit}
+              >
+                <Ci.CiEdit className="w-4 h-4 text-indigo-500" />
+              </button>
+              <button
+                className=" w-6 h-6 bg-red-100 flex justify-center items-center rounded-lg"
+                onClick={handleDelete}
+              >
+                <Ai.AiOutlineDelete className="w-4 h-4 text-danger" />
+              </button>
+            </div>
           </div>
-
-          <div className="relative z-0 w-full  group">
+          <div className="relative z-0 w-full  group  z-0">
             <div className="flex items-center pl-3">
               <input
                 readOnly

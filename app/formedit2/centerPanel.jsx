@@ -4,6 +4,7 @@ import { Draggable } from "@hello-pangea/dnd";
 import { StrictModeDroppable } from "./components/strictmode";
 import ItemForm from "../folders2/sharedControls/itemForm";
 import NewFieldModal2 from "../folders2/modals/newfieldModal2";
+import FormPreview from "../folders2/modals/formPreview";
 
 export default function CenterPanel({
   type,
@@ -23,6 +24,8 @@ export default function CenterPanel({
   addField,
   setAddField,
 }) {
+  const [mode, setMode] = React.useState("edit");
+  const [visibleModal, setVisibleModal] = React.useState(false);
   const typeFormElements = ["heading", "divider", "file"];
   const appendAt = (list, index, data) => {
     const result = [...list];
@@ -66,6 +69,29 @@ export default function CenterPanel({
   };
   return (
     <div className="w-10/12 bg-white h-[calc(100vh-50px)] overflow-x-auto shadow-md has-scrollbar">
+      {/*  */}
+      <div className="absolute right-0 bottom-0 -translate-x-2 -translate-y-2	 p-2 rounded-lg border border-gray_300 space-y-4 ">
+        <div
+          className={`cursor-pointer px-4 py-2 text-medium ${
+            mode === "edit" ? "text-white bg-primary rounded-md" : ""
+          }`}
+          onClick={() => setMode("edit")}
+        >
+          {pageTranslate?.edit}
+        </div>
+        <div
+          className={`cursor-pointer px-4 py-2 text-medium ${
+            mode === "preview" ? "text-white bg-primary rounded-md" : ""
+          }`}
+          onClick={() => {
+            setMode("preview");
+            setVisibleModal(true);
+          }}
+        >
+          {pageTranslate?.preview}
+        </div>
+      </div>
+      {/*  */}
       <div className="p-8 space-2">
         <div
           className="mt-8 px-32"
@@ -164,6 +190,14 @@ export default function CenterPanel({
         setCurrentField={setCurrentField}
         headingForm={headingForm}
         setHeadingForm={setHeadingForm}
+      />
+      <FormPreview
+        pageTranslate={pageTranslate}
+        visibleModal={visibleModal}
+        setVisibleModal={setVisibleModal}
+        fields={fields["fieldSelectedList"]}
+        headingForm={headingForm}
+        setMode={setMode}
       />
     </div>
   );
