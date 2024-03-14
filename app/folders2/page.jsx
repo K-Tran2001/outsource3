@@ -235,6 +235,15 @@ export default function Folders2() {
       save: "Save",
       preview: "Preview",
       preview_form: "Preview Form",
+      click_to_upload: "Click to upload",
+      or_drag_and_drop: "or drag and drop",
+      take_a_photo: "Take A Photo",
+      get_file_from_your_device: "Get File From Your Device",
+      click_to_take_a_photo: "Click to take a photo",
+      take_a_photo_again: "Take a photo again",
+      submit: "Submit",
+      result_saved: "Result saved",
+      form_data_not_found: "Form data not found!",
     };
     const formDatab = new FormData();
 

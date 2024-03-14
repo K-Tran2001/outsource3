@@ -275,7 +275,7 @@ export default function ItemForm({
                 </div>
               )}
             </div>
-            <input
+            {/* <input
               readOnly
               type={field.type}
               name={field.id}
@@ -284,7 +284,14 @@ export default function ItemForm({
               }`}
               placeholder=" "
               required
-            />
+            /> */}
+            <div
+              className={`text-medium px-2 block w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0  peer ${
+                field.type == "date" ? "py-3" : "py-2"
+              }`}
+            >
+              {field.type == "date" ? "dd/mm/yyyy" : ""}
+            </div>
           </div>
         </div>
       )}
